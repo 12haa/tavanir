@@ -3,7 +3,7 @@ import avatarImg from '../assets/images/tavanir.png';
 
 function LoginModal({ children }: { children?: ReactNode }) {
   return (
-    <div className="relative w-[400px] h-[580px] rounded-2xl bg-white/40 shadow-xl backdrop-blur-md">
+    <div className="relative w-[400px] h-[587px] rounded-2xl bg-white/40 shadow-xl backdrop-blur-md">
       <div className="absolute left-[87px] -translate-x-1/2 top-[-40px] h-[80px] w-[85px] rounded-full overflow-hidden">
         <img src={avatarImg} alt="Avatar" className="h-full w-full object-cover" />
       </div>
