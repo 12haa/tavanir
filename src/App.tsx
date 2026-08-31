@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
+import type { JSX } from "react/jsx-runtime";
 
-function App() {
+function App(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
