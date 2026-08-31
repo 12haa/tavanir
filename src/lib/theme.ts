@@ -5,4 +5,10 @@ export const colors = {
   primarySubText: {
     100: '#718096',
   },
+  primaryBtn: {
+    100: '#f97316',
+  },
+  primaryBordr: {
+    100: '#ff9e0c',
+  },
 } as const;
