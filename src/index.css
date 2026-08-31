@@ -1,4 +1,13 @@
 @import 'tailwindcss';
+@font-face {
+  font-family: 'iran';
+  src: url('/iran.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@theme {
+  --font-iran: 'iran', sans-serif;
+}
 /* :root {
   --text: #6b6375;
   --text-h: #08060d;
