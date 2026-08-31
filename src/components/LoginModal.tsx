@@ -1,12 +1,13 @@
 import { type ReactNode } from 'react';
+import avatarImg from '../assets/images/tavanir.png';
 
 function LoginModal({ children }: { children?: ReactNode }) {
   return (
-    <div className="relative h-full w-full">
-      <div className="absolute left-1/2 -translate-x-1/2 top-[-60px] h-[120px] w-[120px] rounded-full bg-blue-400" />
-      <div className="relative w-[500px] h-[650px] overflow-hidden rounded-lg bg-white shadow-xl">
-        <div className="pt-[80px] flex flex-col items-center justify-center h-full">{children}</div>
+    <div className="relative w-[400px] h-[580px] rounded-2xl bg-white/40 shadow-xl backdrop-blur-md">
+      <div className="absolute left-[87px] -translate-x-1/2 top-[-40px] h-[80px] w-[85px] rounded-full overflow-hidden">
+        <img src={avatarImg} alt="Avatar" className="h-full w-full object-cover" />
       </div>
+      <div className="pt-[80px] flex flex-col items-center justify-center h-full">{children}</div>
     </div>
   );
 }
