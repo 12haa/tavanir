@@ -6,11 +6,11 @@ interface LoginTextInputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 function LoginTextInput({ label, className = '', ...rest }: LoginTextInputProps) {
   return (
-    <div className={`flex flex-col gap-1 w-full${className}`} dir="rtl">
-      {label && <label className="text-xs font-medium text-gray-600">{label}</label>}
+    <div className={`flex flex-col gap-3 w-full${className}`} dir="rtl">
+      {label && <label className="text-md font-normal text-gray-700 font-iran">{label}</label>}
       <input
         {...rest}
-        className="w-full border-b-2 border-[var(--color-primary-border)] py-2 text-sm outline-none transition-colors placeholder:text-[var(--color-placeholder-text)]"
+        className="w-full border-b-2 border-[var(--color-primary-border)] py-3.5 text-sm font-iran outline-none transition-colors placeholder:text-base placeholder:pr-5 placeholder:text-[var(--color-placeholder-text)]"
       />
     </div>
   );

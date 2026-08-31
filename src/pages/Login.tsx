@@ -20,7 +20,7 @@ function Login() {
 
       <div className="relative z-10 mb-11.5">
         <LoginModal>
-          <div className="flex flex-col items-center justify-start gap-20 w-full h-full">
+          <div className="flex flex-col items-center justify-start gap-10 w-full h-full">
             <div className="flex flex-col items-center w-full pt-1 gap-0.5">
               <h1
                 className="text-[#ea580c] text-[29px] font-bold font-iran"
@@ -33,23 +33,13 @@ function Login() {
               </h3>
             </div>
 
-            <div className="flex flex-col items-center w-full px-6 gap-4">
+            <div className="flex flex-col items-start w-full px-6 gap-8">
               <LoginTextInput
-                label="ایمیل"
+                label="نام کاربری"
                 type="email"
-                placeholder="ایمیل خود را وارد کنید"
+                placeholder="نام کاربری خود را وارد کنید"
               />
-              <LoginPasswordInput
-                label="رمز عبور"
-                placeholder="رمز عبور خود را وارد کنید"
-              />
-              <button
-                type="button"
-                onClick={handleLogin}
-                className="w-full rounded-lg bg-[#ea580c] py-2.5 text-white text-sm font-bold transition-colors hover:bg-orange-700"
-              >
-                ورود
-              </button>
+              <LoginPasswordInput label="كلمه عبور" placeholder="رمز عبور خود را وارد کنید" />
             </div>
           </div>
         </LoginModal>

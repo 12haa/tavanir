@@ -15,6 +15,6 @@ export const colors = {
     100: '#7a7a7a',
   },
   primaryInputLabel: {
-    100: '#434b5a',
+    100: '#2d3748',
   },
 } as const;
