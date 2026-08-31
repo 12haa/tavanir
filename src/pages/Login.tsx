@@ -2,11 +2,11 @@ import loginBg from '../assets/images/login.jpg';
 import { colors } from '../lib/theme';
 import type { LoginCredentials } from '../types';
 import LoginModal from '../components/LoginModal';
-import CustomInput from '../components/ui/CustomInput';
-import PasswordInput from '../components/ui/PasswordInput';
+import LoginTextInput from '../components/ui/Login/LoginTextInput';
+import LoginPasswordInput from '../components/ui/Login/LoginPasswordInput';
 
 function Login() {
-  const handleLogin = () => {
+  const handleLogin = (_credentials: LoginCredentials) => {
     // TODO: implement authentication logic
   };
 
@@ -34,15 +34,22 @@ function Login() {
             </div>
 
             <div className="flex flex-col items-center w-full px-6 gap-4">
-              <CustomInput label="ایمیل" type="email" placeholder="ایمیل خود را وارد کنید" />
-              <PasswordInput label="رمز عبور" placeholder="رمز عبور خود را وارد کنید" />
-              {/* <button
+              <LoginTextInput
+                label="ایمیل"
+                type="email"
+                placeholder="ایمیل خود را وارد کنید"
+              />
+              <LoginPasswordInput
+                label="رمز عبور"
+                placeholder="رمز عبور خود را وارد کنید"
+              />
+              <button
                 type="button"
                 onClick={handleLogin}
                 className="w-full rounded-lg bg-[#ea580c] py-2.5 text-white text-sm font-bold transition-colors hover:bg-orange-700"
               >
                 ورود
-              </button> */}
+              </button>
             </div>
           </div>
         </LoginModal>

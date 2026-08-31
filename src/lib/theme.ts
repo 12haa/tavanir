@@ -8,7 +8,13 @@ export const colors = {
   primaryBtn: {
     100: '#f97316',
   },
-  primaryBordr: {
+  primaryBorder: {
     100: '#ff9e0c',
+  },
+  primaryPlaceholderTextColor: {
+    100: '#7a7a7a',
+  },
+  primaryInputLabel: {
+    100: '#434b5a',
   },
 } as const;
