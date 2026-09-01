@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { colors } from '../lib/theme';
+
 import NavMenuPanel from './NavMenuPanel';
+import { colors } from '../../../lib/theme';
 
 function NavMenuButton() {
   const [open, setOpen] = useState(false);

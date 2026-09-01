@@ -3,7 +3,7 @@ import { colors } from '../lib/theme';
 import tavanirLogo from '../assets/images/tavanir.png';
 import Image from '../components/shared/Image';
 import LogoutIcon from '../assets/icons/LogoutIcon';
-import NavMenuButton from '../components/NavMenuButton';
+import NavMenuButton from '../components/ui/nav/NavMenuButton';
 
 function MainLayout() {
   const userName = 'کاربر';
