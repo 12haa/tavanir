@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import loginBg from '../assets/images/login.jpg';
 import { colors } from '../lib/theme';
-import LoginModal from '../components/ui/Login/LoginModal';
-import LoginTextInput from '../components/ui/Login/LoginTextInput';
-import LoginPasswordInput from '../components/ui/Login/LoginPasswordInput';
-import LoginButton from '../components/ui/Login/LoginButton';
+import LoginModal from '../components/ui/login/LoginModal';
+import LoginTextInput from '../components/ui/login/LoginTextInput';
+import LoginPasswordInput from '../components/ui/login/LoginPasswordInput';
+import LoginButton from '../components/ui/login/LoginButton';
 import Text from '../components/shared/Text';
 
 
