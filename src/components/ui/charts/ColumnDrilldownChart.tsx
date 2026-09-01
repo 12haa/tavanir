@@ -1,16 +1,8 @@
-import {
-  Chart,
-  Title,
-  Subtitle,
-  Legend,
-  Tooltip,
-  XAxis,
-  YAxis,
-  PlotOptions,
-} from '@highcharts/react';
+import { Chart, Title, Legend, Tooltip, XAxis, YAxis, PlotOptions } from '@highcharts/react';
 
 import { ColumnSeries } from '@highcharts/react/series/Column';
 import { Drilldown } from '@highcharts/react/modules/Drilldown';
+
 import Text from '../../shared/Text';
 import { colors } from '../../../lib/theme';
 
@@ -24,34 +16,62 @@ export default function ColumnDrilldownChart() {
               enabled: true,
             },
           },
+
+          // X-axis styling
+          xAxis: {
+            labels: {
+              style: {
+                // color: '#363630',
+                color: 'red',
+              },
+            },
+            lineColor: '#363630',
+            tickColor: '#363630',
+          },
         }}
       >
+        {/* =========================
+            TITLE
+        ========================== */}
         <Title>
           <Text>درصد قرائت پروفیل بار تا تاریخ 1405/06/09</Text>
         </Title>
 
-        <XAxis type="category" visible={true} />
+        {/* =========================
+            X AXIS
+        ========================== */}
+        <XAxis type="category" visible={true} className="" />
 
+        {/* =========================
+            Y AXIS
+        ========================== */}
         <YAxis
+          showEmpty={false}
+          min={0}
+          max={100}
+          tickPositions={[0, 25, 50, 75, 100]}
           title={{
             text: '',
           }}
-          showEmpty={false}
-          tickPositions={[0, 25, 50, 75, 100]}
-          // visible={false}
         />
 
-        <YAxis showEmpty={false} />
-
+        {/* =========================
+            LEGEND
+        ========================== */}
         <Legend enabled={false} />
 
+        {/* =========================
+            PLOT OPTIONS
+        ========================== */}
         <PlotOptions
           series={{
             borderWidth: 0,
           }}
           column={{
             colorByPoint: false,
+
             color: colors.chart.column,
+
             states: {
               hover: {
                 color: colors.chart.columnHover,
@@ -60,92 +80,102 @@ export default function ColumnDrilldownChart() {
           }}
         />
 
-        <Tooltip
-          headerFormat='<span style="font-size:11px">{series.name}</span><br>'
+        {/* =========================
+            TOOLTIP
+        ========================== */}
+        {/* <Tooltip
+          headerFormat={'<span style="font-size:11px">{series.name}</span><br/>'}
           pointFormat={
-            '<span style="color:{point.color}">{point.name}</span>: ' +
-            '<b>{point.y:.2f}%</b> of weight<br/>'
+            '<span style="color:{point.color}">{point.name}</span>: ' + '<b>{point.y:.0f}%</b><br/>'
           }
-        />
+        /> */}
 
+        {/* =========================
+            MAIN SERIES
+        ========================== */}
         <ColumnSeries
-          name="Ingredients"
+          name="پروفیل بار"
           options={{
             colorByPoint: false,
             yAxis: 0,
+
             tooltip: {
               headerFormat: '<span style="font-size:11px">{series.name}</span><br/>',
+
               pointFormat:
                 '<span style="color:{point.color}">{point.name}</span>: ' +
-                '<b>{point.y:.0f} g</b> in recipe<br/>',
+                '<b>{point.y:.0f}%</b><br/>',
             },
           }}
           data={[
             {
               name: 'کل',
               y: 70,
-              drilldown: 'کل',
+              // drilldown: 'کل',
             },
             {
               name: 'پایا',
               y: 43,
-              drilldown: 'پایا',
+              // drilldown: 'پایا',
             },
             {
               name: 'فراب',
               y: 0,
-              drilldown: 'فراب',
+              // drilldown: 'فراب',
             },
             {
               name: 'بهینه سازان',
               y: 0,
-              drilldown: 'بهینه سازان',
+              // drilldown: 'بهینه سازان',
             },
           ]}
         />
 
-        <Drilldown>
-          <ColumnSeries
-            id="Rolled Oats"
-            
-            name="Rolled Oats"
+        {/* =========================
+            DRILLDOWN
+        ========================== */}
+        {/* <Drilldown> */}
+        {/* کل */}
+        {/* <ColumnSeries
+            id="کل"
+            name="کل"
             data={[
-              ['Carbohydrates', 67.7],
-              ['Fat', 6.52],
-              ['Protein', 13.15],
+              ['قرائت شده', 70],
+              ['قرائت نشده', 30],
             ]}
-          />
+          /> */}
 
-          <ColumnSeries
-            id="Maple Syrup"
-            name="Maple Syrup"
+        {/* پایا */}
+        {/* <ColumnSeries
+            id="پایا"
+            name="پایا"
             data={[
-              ['Carbohydrates', 67],
-              ['Fat', 0.06],
-              ['Protein', 0.04],
+              ['قرائت شده', 43],
+              ['قرائت نشده', 57],
             ]}
-          />
+          /> */}
 
-          <ColumnSeries
-            id="Flaked Almonds"
-            name="Flaked Almonds"
+        {/* فراب */}
+        {/* <ColumnSeries
+            id="فراب"
+            className="text-black"
+            name="فراب"
             data={[
-              ['Carbohydrates', 21.6],
-              ['Fat', 49.9],
-              ['Protein', 21.2],
+              ['قرائت شده', 0],
+              ['قرائت نشده', 100],
             ]}
-          />
+          /> */}
 
-          <ColumnSeries
-            id="Dried Berries"
-            name="Dried Berries"
+        {/* بهینه سازان */}
+        {/* <ColumnSeries
+            id="بهینه سازان"
+            name="بهینه سازان"
             data={[
-              ['Carbohydrates', 65],
-              ['Fat', 1],
-              ['Protein', 1],
+              ['قرائت شده', 0],
+              ['قرائت نشده', 100],
             ]}
-          />
-        </Drilldown>
+          /> */}
+        {/* </Drilldown> */}
       </Chart>
     </div>
   );

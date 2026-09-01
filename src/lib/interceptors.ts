@@ -1,5 +1,5 @@
-import type { AxiosError, AxiosInstance, InternalAxiosRequestConfig } from "axios";
-import api from "./api";
+// import type { AxiosError, AxiosInstance, InternalAxiosRequestConfig } from "axios";
+import api from './api';
 
 // Request interceptor
 // api.interceptors.request.use(

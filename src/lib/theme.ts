@@ -42,5 +42,6 @@ export const colors = {
   chart: {
     column: '#fee1ba',
     columnHover: '#fffad3',
+    axisText: '#363630',
   },
 } as const;
