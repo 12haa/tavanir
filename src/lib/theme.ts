@@ -33,4 +33,9 @@ export const colors = {
   navMenu: {
     100: '#fdc942',
   },
+
+  navPanel: {
+    100: '#fffbf6',
+    200: '#fc9e29',
+  },
 } as const;
