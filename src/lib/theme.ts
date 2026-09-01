@@ -2,6 +2,9 @@ export const colors = {
   primary: {
     600: '#ea580c',
   },
+  primaryTextColor: {
+    100: '#363630',
+  },
   primarySubText: {
     100: '#718096',
     200: '#4b4c47',
@@ -21,5 +24,9 @@ export const colors = {
 
   primaryInputLabel: {
     100: '#2d3748',
+  },
+
+  background: {
+    100: '#f5f7fa',
   },
 } as const;
