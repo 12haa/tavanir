@@ -3,6 +3,7 @@ import { colors } from '../lib/theme';
 import tavanirLogo from '../assets/images/tavanir.png';
 import Image from '../components/shared/Image';
 import LogoutIcon from '../assets/icons/LogoutIcon';
+import NavMenuButton from '../components/NavMenuButton';
 
 function MainLayout() {
   const userName = 'کاربر';
@@ -43,6 +44,7 @@ function MainLayout() {
           </div>
         </div>
       </header>
+      <NavMenuButton />
       <main className="flex w-full flex-1 flex-col pt-36 px-20">
         <Outlet />
       </main>

@@ -29,4 +29,8 @@ export const colors = {
   background: {
     100: '#f5f7fa',
   },
+
+  navMenu: {
+    100: '#fdc942',
+  },
 } as const;
