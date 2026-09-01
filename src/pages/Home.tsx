@@ -1,3 +1,4 @@
+import IranMap from '../assets/svg/iranMap';
 import CustomWrapper from '../components/shared/CustomWrapper';
 
 function Home() {
@@ -7,9 +8,13 @@ function Home() {
         className="w-full flex flex-row px-4 gap-2 items-center justify-between"
         width={'100%'}
       >
-        <div>a</div>
+        <div>
+          <IranMap height={600} width={600}  />
+        </div>
         <div>c</div>
-        <div>b</div>
+        <div>
+          <IranMap height={600} width={600} />
+        </div>
       </CustomWrapper>
     </div>
   );
