@@ -11,6 +11,10 @@ export default function ColumnDrilldownChart() {
     <div className="w-full">
       <Chart
         options={{
+          credits: {
+            enabled: false,
+          },
+
           accessibility: {
             announceNewData: {
               enabled: true,
