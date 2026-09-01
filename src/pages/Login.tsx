@@ -1,6 +1,6 @@
+import { useNavigate } from 'react-router-dom';
 import loginBg from '../assets/images/login.jpg';
 import { colors } from '../lib/theme';
-import type { LoginCredentials } from '../types';
 import LoginModal from '../components/ui/Login/LoginModal';
 import LoginTextInput from '../components/ui/Login/LoginTextInput';
 import LoginPasswordInput from '../components/ui/Login/LoginPasswordInput';
@@ -8,10 +8,7 @@ import LoginButton from '../components/ui/Login/LoginButton';
 import Text from '../components/ui/Login/Text';
 
 function Login() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleLogin = (_credentials: LoginCredentials) => {
-    // TODO: implement authentication logic
-  };
+  const navigate = useNavigate();
 
   return (
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden ">
@@ -45,7 +42,7 @@ function Login() {
               />
               <LoginPasswordInput label="كلمه عبور" placeholder="رمز عبور خود را وارد کنید" />
               <div className="mt-5 flex w-full h-full">
-                <LoginButton label="ورود به سامانه" />
+                <LoginButton label="ورود به سامانه" onClick={() => navigate('/')} />
               </div>
               <div className="flex flex-col gap-2  items-center justify-center">
                 <Text
