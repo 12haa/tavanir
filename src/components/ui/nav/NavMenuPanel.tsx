@@ -3,12 +3,15 @@ import { navMenu } from '../../../constants/nav';
 import NavAccordionItem from './NavAccordionItem';
 import Text from '../../shared/Text';
 import Home from '../../../assets/icons/Home';
+import { useState } from 'react';
 
 interface NavMenuPanelProps {
   open: boolean;
 }
 
 function NavMenuPanel({ open }: NavMenuPanelProps) {
+  const [openId, setOpenId] = useState<number | null>(null);
+
   return (
     <div
       className={` fixed top-17 z-99 transition-transform duration-300 ease-in-out rounded-2xl shadow-md px-5 ${
@@ -30,7 +33,12 @@ function NavMenuPanel({ open }: NavMenuPanelProps) {
       </div>
       <div className="flex flex-col py-4 overflow-y-auto">
         {navMenu.map((item) => (
-          <NavAccordionItem key={item.id} item={item} />
+          <NavAccordionItem
+            key={item.id}
+            item={item}
+            isOpen={openId === item.id}
+            onToggle={() => setOpenId((prev) => (prev === item.id ? null : item.id))}
+          />
         ))}
       </div>
     </div>

@@ -5,7 +5,8 @@ import LoginModal from '../components/ui/Login/LoginModal';
 import LoginTextInput from '../components/ui/Login/LoginTextInput';
 import LoginPasswordInput from '../components/ui/Login/LoginPasswordInput';
 import LoginButton from '../components/ui/Login/LoginButton';
-import Text from '../components/ui/Login/Text';
+import Text from '../components/shared/Text';
+
 
 function Login() {
   const navigate = useNavigate();
