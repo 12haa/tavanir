@@ -1,27 +1,9 @@
 import { colors } from '../../../lib/theme';
-import { navMenu, type NavMenuItem } from '../../../constants/nav';
+import { navMenu } from '../../../constants/nav';
+import NavAccordionItem from './NavAccordionItem';
 
 interface NavMenuPanelProps {
   open: boolean;
-}
-
-function NavMenuItemRow({ item }: { item: NavMenuItem }) {
-  return (
-    <div key={item.id} className="flex flex-col">
-      <span className="cursor-pointer py-2 text-sm font-iran font-medium text-gray-800">
-        {item.menuTitle}
-      </span>
-      {item.children?.length ? (
-        <div className="mr-3 flex flex-col border-r border-[#fc9e29] pr-3">
-          {item.children.map((child) => (
-            <span key={child.id} className="cursor-pointer py-1.5 text-sm font-iran text-gray-600">
-              {child.menuTitle}
-            </span>
-          ))}
-        </div>
-      ) : null}
-    </div>
-  );
 }
 
 function NavMenuPanel({ open }: NavMenuPanelProps) {
@@ -40,7 +22,7 @@ function NavMenuPanel({ open }: NavMenuPanelProps) {
     >
       <div className="flex flex-col p-5 overflow-y-auto">
         {navMenu.map((item) => (
-          <NavMenuItemRow key={item.id} item={item} />
+          <NavAccordionItem key={item.id} item={item} />
         ))}
       </div>
     </div>
