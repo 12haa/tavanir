@@ -22,7 +22,7 @@ function LoginPasswordInput({ label, className = '', ...rest }: LoginPasswordInp
         <input
           {...rest}
           type={showPassword ? 'text' : 'password'}
-          className="w-full border-b-2 border-[var(--color-primary-border)] py-3.5 text-sm font-iran outline-none transition-colors placeholder:text-base placeholder:pr-5 placeholder:text-[var(--color-placeholder-text)]"
+          className="w-full border-b-2 border-[var(--color-primary-border)] py-3.5 pr-5 text-sm font-iran outline-none transition-colors placeholder:text-base placeholder:text-[var(--color-placeholder-text)]"
         />
         <button
           type="button"

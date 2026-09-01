@@ -48,7 +48,11 @@ function Login() {
                 <LoginButton label="ورود به سامانه" />
               </div>
               <div className="flex flex-col gap-2  items-center justify-center">
-                <Text as="h2" className="text-md font-iran">
+                <Text
+                  as="h2"
+                  className="text-sm font-iran"
+                  style={{ color: colors.primarySubText[200] }}
+                >
                   v9.36.86.219
                 </Text>
                 <Text
