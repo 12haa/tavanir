@@ -4,6 +4,7 @@ import type { LoginCredentials } from '../types';
 import LoginModal from '../components/LoginModal';
 import LoginTextInput from '../components/ui/Login/LoginTextInput';
 import LoginPasswordInput from '../components/ui/Login/LoginPasswordInput';
+import LoginButton from '../components/ui/Login/LoginButton';
 
 function Login() {
   const handleLogin = (_credentials: LoginCredentials) => {
@@ -40,6 +41,9 @@ function Login() {
                 placeholder="نام کاربری خود را وارد کنید"
               />
               <LoginPasswordInput label="كلمه عبور" placeholder="رمز عبور خود را وارد کنید" />
+              <div className="mt-5 flex w-full h-full">
+                <LoginButton label="ورود به سامانه" />
+              </div>
             </div>
           </div>
         </LoginModal>

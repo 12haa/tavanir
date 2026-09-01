@@ -8,6 +8,9 @@ export const colors = {
   primaryBtn: {
     100: '#f97316',
   },
+  secondaryBtn: {
+    100: '#ea580c',
+  },
   primaryBorder: {
     100: '#ff9e0c',
   },
