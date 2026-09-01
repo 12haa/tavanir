@@ -6,7 +6,7 @@ function Home() {
   return (
     <div className="flex flex-col gap-4">
       <CustomWrapper
-        className="w-full flex flex-row  py-4 gap-2 items-center justify-between"
+        className="w-full flex flex-row  py-12 gap-2 items-center justify-between"
         width={'100%'}
       >
         <div>

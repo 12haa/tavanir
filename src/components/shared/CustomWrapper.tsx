@@ -1,5 +1,6 @@
 import type { CSSProperties, HTMLAttributes, ReactNode } from 'react';
 import { colors } from '../../lib/theme';
+import Message from '../../assets/icons/Message';
 
 interface CustomWrapperProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
@@ -19,6 +20,10 @@ interface CustomWrapperProps extends HTMLAttributes<HTMLDivElement> {
   fixed?: boolean;
   /** When fixed=true, controls slide in/out like NavMenuPanel's `open` */
   open?: boolean;
+  /** Click handler for the message button */
+  onMessageClick?: () => void;
+  /** Href for the message button */
+  messageHref?: string;
 }
 
 /**
@@ -42,15 +47,15 @@ function CustomWrapper({
   bgColor = '#fefeff',
   fixed = false,
   open,
+  onMessageClick,
+  messageHref,
   ...rest
 }: CustomWrapperProps) {
-  const fixedClasses = fixed
-    ? ``
-    : '';
+  const fixedClasses = fixed ? `` : '';
 
   return (
     <div
-      className={`rounded-2xl shadow-md flex flex-col gap-2 px-5 overflow-hidden ${fixedClasses} ${className}`}
+      className={` relative rounded-2xl shadow-md flex flex-col gap-2 px-5 overflow-hidden ${fixedClasses} ${className}`}
       style={{
         width,
         height,
@@ -61,6 +66,19 @@ function CustomWrapper({
       }}
       {...rest}
     >
+      {' '}
+      <button
+        onClick={onMessageClick}
+        className="absolute top-1 -rotate-90 left-3 z-10 p-1 rounded hover:bg-gray-100 py-2"
+      >
+        {messageHref ? (
+          <a href={messageHref}>
+            <Message />
+          </a>
+        ) : (
+          <Message />
+        )}
+      </button>
       {children}
     </div>
   );
