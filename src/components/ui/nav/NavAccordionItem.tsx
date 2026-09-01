@@ -36,10 +36,9 @@ function NavAccordionItem({ item }: NavAccordionItemProps) {
 
       {hasChildren && (
         <div
-          className="mr-2 overflow-hidden transition-all duration-300 ease-in-out"
+          className="mr-2 overflow-hidden transition-[max-height] duration-300 ease-in-out"
           style={{
             maxHeight: open ? 300 : 0,
-            opacity: open ? 1 : 0,
           }}
         >
           <div className="flex flex-col pr-1">
