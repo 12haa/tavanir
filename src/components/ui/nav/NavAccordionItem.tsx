@@ -3,6 +3,7 @@ import { colors } from '../../../lib/theme';
 import { type NavMenuItem } from '../../../constants/nav';
 import ArrowRight from '../../../assets/icons/ArrowRight';
 import Dot from '../../../assets/icons/dot';
+import Text from '../../shared/Text';
 
 interface NavAccordionItemProps {
   item: NavMenuItem;
@@ -17,13 +18,13 @@ function NavAccordionItem({ item }: NavAccordionItemProps) {
       <button
         type="button"
         onClick={() => hasChildren && setOpen((prev) => !prev)}
-        className="flex w-full items-center justify-start py-2 text-right gap-1"
+        className="flex w-full items-center justify-start py-2 text-right gap-2"
       >
         {hasChildren && (
           <ArrowRight
-            width={14}
-            height={14}
-            color={colors.navPanel[200]}
+            width={13}
+            height={13}
+            color={colors.primaryTextColor[100]}
             className=""
             style={{
               transition: 'transform 0.3s ease-in-out',
@@ -31,7 +32,13 @@ function NavAccordionItem({ item }: NavAccordionItemProps) {
             }}
           />
         )}
-        <span className="text-sm font-iran font-medium text-gray-800">{item.menuTitle}</span>
+        <Text
+          as="span"
+          className="text-md font-iran font-semibold "
+          style={{ color: colors.primaryTextColor[100] }}
+        >
+          {item.menuTitle}
+        </Text>
       </button>
 
       {hasChildren && (
@@ -48,8 +55,14 @@ function NavAccordionItem({ item }: NavAccordionItemProps) {
                 type="button"
                 className="flex items-center gap-5 py-1.5 text-right"
               >
-                <Dot width={18} height={18} color={colors.navPanel[200]} />
-                <span className="text-sm font-iran text-gray-600">{child.menuTitle}</span>
+                <Dot width={28} height={28} color={colors.primaryTextColor[100]} />
+                <Text
+                  as="span"
+                  className="text-md font-iran text-gray-600"
+                  style={{ color: colors.primaryTextColor[100] }}
+                >
+                  {child.menuTitle}
+                </Text>
               </button>
             ))}
           </div>
