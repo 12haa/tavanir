@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { colors } from '../lib/theme';
 import tavanirLogo from '../assets/images/tavanir.png';
 import Image from '../components/shared/Image';
+import LogoutIcon from '../assets/icons/LogoutIcon';
 
 function MainLayout() {
   const userName = 'کاربر';
@@ -32,7 +33,14 @@ function MainLayout() {
               توانیر
             </span>
           </div>
-          <span className="font-iran text-sm text-gray-700">{userName}</span>
+          <div className="flex items-center gap-3">
+            <span className="font-iran text-sm text-gray-700">
+              کاربر: <span className="font-bold">{userName}</span>
+            </span>
+            <button type="button" className="cursor-pointer" aria-label="خروج">
+              <LogoutIcon width={35} height={35} />
+            </button>
+          </div>
         </div>
       </header>
       <main className="flex w-full flex-1 flex-col pt-36 px-20">
