@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react';
-import avatarImg from '../assets/images/tavanir.png';
+import avatarImg from '../../../assets/images/tavanir.png'
 
 function LoginModal({ children }: { children?: ReactNode }) {
   return (

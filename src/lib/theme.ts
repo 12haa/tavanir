@@ -4,6 +4,7 @@ export const colors = {
   },
   primarySubText: {
     100: '#718096',
+    200: '#4b4c47',
   },
   primaryBtn: {
     100: '#f97316',
@@ -17,6 +18,7 @@ export const colors = {
   primaryPlaceholderTextColor: {
     100: '#7a7a7a',
   },
+
   primaryInputLabel: {
     100: '#2d3748',
   },
