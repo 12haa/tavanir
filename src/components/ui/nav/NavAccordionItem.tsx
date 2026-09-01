@@ -58,22 +58,27 @@ function NavAccordionItem({ item, isOpen, onToggle }: NavAccordionItemProps) {
         >
           <div className="overflow-hidden">
             <div className="flex flex-col pr-1">
-            {item.children!.map((child) => (
-              <button
-                key={child.id}
-                type="button"
-                className="flex items-center gap-5 py-1.5 text-right cursor-pointer"
-              >
-                <Dot width={28} height={28} color={colors.primaryTextColor[100]} />
-                <Text
-                  as="span"
-                  className="text-md font-iran"
-                  style={{ color: colors.primaryTextColor[100] }}
+              {item.children!.map((child) => (
+                <button
+                  key={child.id}
+                  type="button"
+                  className="flex items-start gap-3 py-1.5 text-right cursor-pointer"
                 >
-                  {child.menuTitle}
-                </Text>
-              </button>
-            ))}
+                  <Dot
+                    width={28}
+                    height={28}
+                    color={colors.primaryTextColor[100]}
+                    className="shrink-0 flex-none mt-0.5"
+                  />
+                  <Text
+                    as="span"
+                    className="text-md font-iran flex-1 min-w-0 text-right leading-6"
+                    style={{ color: colors.primaryTextColor[100] }}
+                  >
+                    {child.menuTitle}
+                  </Text>
+                </button>
+              ))}
             </div>
           </div>
         </div>
