@@ -14,12 +14,12 @@ function NavMenuPanel({ open }: NavMenuPanelProps) {
 
   return (
     <div
-      className={` fixed top-17 z-99 transition-transform duration-300 ease-in-out rounded-2xl shadow-md px-5 ${
+      className={`fixed top-17 z-99 transition-transform duration-300 ease-in-out rounded-2xl shadow-md flex flex-col gap-2 px-5 overflow-hidden ${
         open ? 'right-8' : 'right-0'
       }`}
       style={{
         width: 300,
-        height: 550,
+        height: 600,
         backgroundColor: colors.navPanel[100],
         border: `1px solid ${colors.navPanel[200]}`,
         transform: open ? 'translateX(0)' : 'translateX(100%)',
@@ -31,7 +31,7 @@ function NavMenuPanel({ open }: NavMenuPanelProps) {
           صفحه اصلی
         </Text>
       </div>
-      <div className="flex flex-col py-4 overflow-y-auto">
+      <div className="flex flex-1 min-h-0 flex-col overflow-y-auto overscroll-contain py-4 scrollbar-thin">
         {navMenu.map((item) => (
           <NavAccordionItem
             key={item.id}

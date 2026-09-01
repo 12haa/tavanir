@@ -71,4 +71,51 @@ export const navMenu: NavMenuItem[] = [
       },
     ],
   },
+  {
+    id: 4000,
+    menuTitle: ' گزارش های قرائت پروفیل بار',
+    route: '/reports',
+    children: [
+      {
+        id: 4001,
+        menuTitle: 'گزارش های همکاری',
+        route: '/reports/daily',
+      },
+      {
+        id: 4002,
+        menuTitle: 'گزارش های ثبت نام',
+        route: '/reports/monthly',
+      },
+      {
+        id: 4003,
+        menuTitle: 'گزارش های پیش بینی کاهش بار',
+        route: '/reports/monthly',
+      },
+      {
+        id: 4004,
+        menuTitle: 'گزارش های عملکرد کاهش بار',
+        route: '/reports/monthly',
+      },
+      {
+        id: 4004,
+        menuTitle: 'گزارش های مدیریت بار',
+        route: '/reports/monthly',
+      },
+      {
+        id: 4004,
+        menuTitle: 'گزارش های پاداش',
+        route: '/reports/monthly',
+      },
+      {
+        id: 4004,
+        menuTitle: 'گزارش های شهرک های صنعتی و فیدر و نیروگاه های خورشیدی',
+        route: '/reports/monthly',
+      },
+      {
+        id: 4004,
+        menuTitle: 'گزارش های تکمیلی',
+        route: '/reports/monthly',
+      },
+    ],
+  },
 ];

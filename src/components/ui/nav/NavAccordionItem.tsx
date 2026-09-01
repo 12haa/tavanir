@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { colors } from '../../../lib/theme';
 import { type NavMenuItem } from '../../../constants/nav';
 import ArrowRight from '../../../assets/icons/ArrowRight';
@@ -12,9 +13,17 @@ interface NavAccordionItemProps {
 
 function NavAccordionItem({ item, isOpen, onToggle }: NavAccordionItemProps) {
   const hasChildren = !!item.children?.length;
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      // scroll the opened accordion into view inside the panel's scroll container
+      ref.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, [isOpen]);
 
   return (
-    <div className="flex flex-col">
+    <div ref={ref} className="flex flex-col">
       <button
         type="button"
         onClick={() => hasChildren && onToggle()}
@@ -42,12 +51,13 @@ function NavAccordionItem({ item, isOpen, onToggle }: NavAccordionItemProps) {
 
       {hasChildren && (
         <div
-          className="mr-2 overflow-hidden transition-[max-height] duration-300 ease-in-out"
+          className="mr-2 grid transition-[grid-template-rows] duration-300 ease-in-out"
           style={{
-            maxHeight: isOpen ? 300 : 0,
+            gridTemplateRows: isOpen ? '1fr' : '0fr',
           }}
         >
-          <div className="flex flex-col pr-1">
+          <div className="overflow-hidden">
+            <div className="flex flex-col pr-1">
             {item.children!.map((child) => (
               <button
                 key={child.id}
@@ -64,6 +74,7 @@ function NavAccordionItem({ item, isOpen, onToggle }: NavAccordionItemProps) {
                 </Text>
               </button>
             ))}
+            </div>
           </div>
         </div>
       )}
