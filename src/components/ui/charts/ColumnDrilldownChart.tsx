@@ -12,6 +12,7 @@ import {
 import { ColumnSeries } from '@highcharts/react/series/Column';
 import { Drilldown } from '@highcharts/react/modules/Drilldown';
 import Text from '../../shared/Text';
+import { colors } from '../../../lib/theme';
 
 export default function ColumnDrilldownChart() {
   return (
@@ -33,9 +34,10 @@ export default function ColumnDrilldownChart() {
 
         <YAxis
           title={{
-            text: 'Percent per weight',
+            text: '',
           }}
           showEmpty={false}
+          tickPositions={[0, 25, 50, 75, 100]}
           // visible={false}
         />
 
@@ -46,6 +48,15 @@ export default function ColumnDrilldownChart() {
         <PlotOptions
           series={{
             borderWidth: 0,
+          }}
+          column={{
+            colorByPoint: false,
+            color: colors.chart.column,
+            states: {
+              hover: {
+                color: colors.chart.columnHover,
+              },
+            },
           }}
         />
 
@@ -60,8 +71,8 @@ export default function ColumnDrilldownChart() {
         <ColumnSeries
           name="Ingredients"
           options={{
-            colorByPoint: true,
-            yAxis: 1,
+            colorByPoint: false,
+            yAxis: 0,
             tooltip: {
               headerFormat: '<span style="font-size:11px">{series.name}</span><br/>',
               pointFormat:
@@ -71,19 +82,24 @@ export default function ColumnDrilldownChart() {
           }}
           data={[
             {
-              name: 'Rolled Oats',
-              y: 300,
-              drilldown: 'Rolled Oats',
+              name: 'کل',
+              y: 70,
+              drilldown: 'کل',
             },
             {
-              name: 'Maple Syrup',
-              y: 170,
-              drilldown: 'Maple Syrup',
+              name: 'پایا',
+              y: 43,
+              drilldown: 'پایا',
             },
             {
-              name: 'Flaked Almonds',
-              y: 100,
-              drilldown: 'Flaked Almonds',
+              name: 'فراب',
+              y: 0,
+              drilldown: 'فراب',
+            },
+            {
+              name: 'بهینه سازان',
+              y: 0,
+              drilldown: 'بهینه سازان',
             },
           ]}
         />
@@ -91,6 +107,7 @@ export default function ColumnDrilldownChart() {
         <Drilldown>
           <ColumnSeries
             id="Rolled Oats"
+            
             name="Rolled Oats"
             data={[
               ['Carbohydrates', 67.7],
@@ -126,76 +143,6 @@ export default function ColumnDrilldownChart() {
               ['Carbohydrates', 65],
               ['Fat', 1],
               ['Protein', 1],
-            ]}
-          />
-
-          <ColumnSeries
-            id="Sunflower Seeds"
-            name="Sunflower Seeds"
-            data={[
-              ['Carbohydrates', 20],
-              ['Fat', 51.46],
-              ['Protein', 20.78],
-            ]}
-          />
-
-          <ColumnSeries
-            id="Sesame Seeds"
-            name="Sesame Seeds"
-            data={[
-              ['Carbohydrates', 23.4],
-              ['Fat', 49.7],
-              ['Protein', 17.7],
-            ]}
-          />
-
-          <ColumnSeries
-            id="Pumpkin Seeds"
-            name="Pumpkin Seeds"
-            data={[
-              ['Carbohydrates', 14.71],
-              ['Fat', 49.05],
-              ['Protein', 29.84],
-            ]}
-          />
-
-          <ColumnSeries
-            id="Coconut"
-            name="Coconut"
-            data={[
-              ['Carbohydrates', 15.23],
-              ['Fat', 33.49],
-              ['Protein', 3.33],
-            ]}
-          />
-
-          <ColumnSeries
-            id="Honey"
-            name="Honey"
-            data={[
-              ['Carbohydrates', 82],
-              ['Fat', 0],
-              ['Protein', 0.3],
-            ]}
-          />
-
-          <ColumnSeries
-            id="Vegetable Oil"
-            name="Vegetable Oil"
-            data={[
-              ['Carbohydrates', 0],
-              ['Fat', 96],
-              ['Protein', 0],
-            ]}
-          />
-
-          <ColumnSeries
-            id="Vanilla Extract"
-            name="Vanilla Extract"
-            data={[
-              ['Carbohydrates', 12.6],
-              ['Fat', 0],
-              ['Protein', 0],
             ]}
           />
         </Drilldown>

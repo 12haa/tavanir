@@ -38,4 +38,9 @@ export const colors = {
     100: '#fffbf6',
     200: '#fc9e29',
   },
+
+  chart: {
+    column: '#fee1ba',
+    columnHover: '#fffad3',
+  },
 } as const;
