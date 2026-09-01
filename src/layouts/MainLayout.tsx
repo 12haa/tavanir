@@ -45,7 +45,7 @@ function MainLayout() {
         </div>
       </header>
       <NavMenuButton />
-      <main className="flex w-full flex-1 flex-col pt-36 px-20">
+      <main className="flex flex-1 flex-col pt-36 px-12">
         <Outlet />
       </main>
     </div>
