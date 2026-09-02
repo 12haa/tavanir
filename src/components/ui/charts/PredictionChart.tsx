@@ -58,6 +58,15 @@ export default function PredictionChart() {
           lineColor="#333333"
           lineWidth={1}
           tickLength={0}
+          title={{
+            text: 'زمان',
+            style: {
+              fontFamily: 'iran, sans-serif',
+              fontSize: '14px',
+              fontWeight: '400',
+              color: '#333333',
+            },
+          }}
           labels={{
             style: {
               fontFamily: 'iran, sans-serif',
@@ -74,11 +83,17 @@ export default function PredictionChart() {
           gridLineColor="#E2E2E2"
           gridLineWidth={1}
           title={{
-            text: undefined,
+            text: 'MW',
+            style: {
+              fontFamily: 'iran, sans-serif',
+              fontSize: '14px',
+              fontWeight: '400',
+              color: '#333333',
+            },
           }}
           labels={{
             style: {
-              fontFamily: 'DanaFaNum, sans-serif',
+              fontFamily: 'iran, sans-serif',
               fontSize: '11px',
               color: '#333333',
             },
