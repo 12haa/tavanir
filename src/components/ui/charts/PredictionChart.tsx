@@ -3,7 +3,12 @@ import { Chart, Title, Legend, Tooltip, XAxis, YAxis, PlotOptions } from '@highc
 import { AreaSplineSeries } from '@highcharts/react/series/AreaSpline';
 import Text from '../../shared/Text';
 
-const hours = [
+export interface PredictionChartProps {
+  hours?: string[];
+  values?: number[];
+}
+
+const defaultHours = [
   '01:00',
   '02:00',
   '03:00',
@@ -30,15 +35,26 @@ const hours = [
   '24:00',
 ];
 
-const values = [
+const defaultValues = [
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.02, 0.55, 0.82, 0.91, 0.93, 0.72, 0.66, 0.79, 0.76, 0.6, 0.6, 0.6,
   0.6, 0,
 ];
 
-export default function PredictionChart() {
+export default function PredictionChart({
+  hours = defaultHours,
+  values = defaultValues,
+}: PredictionChartProps) {
   return (
     <div dir="rtl" className="w-full py-6">
-      <Chart height={350} backgroundColor="transparent">
+      <Chart
+        height={350}
+        backgroundColor="transparent"
+        options={{
+          credits: {
+            enabled: false,
+          },
+        }}
+      >
         <Title
           align="center"
           style={{

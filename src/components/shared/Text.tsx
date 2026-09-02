@@ -14,6 +14,7 @@ function Text<C extends ElementType = 'p'>({
   as,
   className = '',
   children,
+  style,
   ...rest
 }: TextProps<C>) {
   const Component = as || 'p';
@@ -21,7 +22,7 @@ function Text<C extends ElementType = 'p'>({
     <Component
       className={twMerge(DEFAULT_CLASSES, className)}
       {...rest}
-      style={{ color: colors.primaryTextColor[100] }}
+      style={{ color: colors.primaryTextColor[100], ...style }}
     >
       {children}
     </Component>
