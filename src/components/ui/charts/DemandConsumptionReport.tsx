@@ -35,15 +35,15 @@ const defaultHours = [
   '24:00',
 ];
 
-const defaultValues = [
-  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.02, 0.55, 0.82, 0.91, 0.93, 0.72, 0.66, 0.79, 0.76, 0.6, 0.6, 0.6,
-  0.6, 0,
-];
+const defaultValues = new Array(defaultHours.length).fill(0);
 
 export default function DemandConsumptionReport({
   hours = defaultHours,
   values = defaultValues,
 }: DemandConsumptionReportProps) {
+  // Always render a flat line at zero.
+  const zeroValues = new Array(hours.length).fill(0);
+
   return (
     <div dir="rtl" className="w-full py-6">
       <Chart
@@ -53,9 +53,10 @@ export default function DemandConsumptionReport({
           credits: {
             enabled: false,
           },
+
           chart: {
             animation: {
-              duration: 2000,
+              duration: 3500,
             },
           },
         }}
@@ -69,7 +70,7 @@ export default function DemandConsumptionReport({
             color: '#333333',
           }}
         >
-          <Text> گزارش تقاضا و مصرف</Text>
+          <Text>گزارش تقاضا و مصرف</Text>
         </Title>
 
         <Legend enabled={false} />
@@ -98,9 +99,11 @@ export default function DemandConsumptionReport({
         />
 
         <YAxis
-          min={0}
-          max={1.25}
-          tickInterval={0.25}
+          min={-1}
+          max={1}
+          startOnTick={false}
+          endOnTick={false}
+          tickPositions={[0]}
           gridLineColor="#E2E2E2"
           gridLineWidth={1}
           title={{
@@ -123,23 +126,26 @@ export default function DemandConsumptionReport({
 
         <Tooltip
           shared={false}
-          useHTML={true}
+          useHTML
           backgroundColor="#FFFFFF"
           borderColor="#D5D5D5"
           borderWidth={1}
           borderRadius={4}
-          shadow={true}
+          shadow
         />
 
         <PlotOptions
           area={{
             lineWidth: 2.5,
+
             marker: {
               enabled: false,
             },
+
             animation: {
-              duration: 2000,
+              duration: 3500,
             },
+
             fillColor: {
               linearGradient: {
                 x1: 0,
@@ -147,10 +153,11 @@ export default function DemandConsumptionReport({
                 x2: 0,
                 y2: 1,
               },
+
               stops: [
-                [0, 'rgba(0, 174, 239, 0.55)'],
-                [0.5, 'rgba(0, 174, 239, 0.20)'],
-                [1, 'rgba(0, 174, 239, 0.02)'],
+                [0, 'rgba(44, 144, 84, 0.30)'],
+                [0.5, 'rgba(44, 144, 84, 0.12)'],
+                [1, 'rgba(44, 144, 84, 0.02)'],
               ],
             },
           }}
@@ -158,11 +165,11 @@ export default function DemandConsumptionReport({
 
         <AreaSeries
           name="تقاضا و مصرف"
-          data={values}
-          color="#00AEEF"
+          data={zeroValues}
+          color="#2c9054"
           options={{
             animation: {
-              duration: 2000,
+              duration: 3500,
             },
           }}
         />
