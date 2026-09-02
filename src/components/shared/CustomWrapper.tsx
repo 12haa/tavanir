@@ -20,6 +20,8 @@ interface CustomWrapperProps extends HTMLAttributes<HTMLDivElement> {
   fixed?: boolean;
   /** When fixed=true, controls slide in/out like NavMenuPanel's `open` */
   open?: boolean;
+  /** Boolean to show the message icon */
+  showMessage?: boolean;
   /** Click handler for the message button */
   onMessageClick?: () => void;
   /** Href for the message button */
@@ -47,6 +49,7 @@ function CustomWrapper({
   bgColor = '#fefeff',
   fixed = false,
   open,
+  showMessage = true,
   onMessageClick,
   messageHref,
   ...rest
@@ -66,19 +69,20 @@ function CustomWrapper({
       }}
       {...rest}
     >
-      {' '}
-      <button
-        onClick={onMessageClick}
-        className="absolute top-1 -rotate-90 left-3 z-10 p-1 rounded hover:bg-gray-100 py-2"
-      >
-        {messageHref ? (
-          <a href={messageHref}>
+      {showMessage ? (
+        <button
+          onClick={onMessageClick}
+          className="absolute top-1 -rotate-90 left-3 z-10 p-1 rounded hover:bg-gray-100 py-2"
+        >
+          {messageHref ? (
+            <a href={messageHref}>
+              <Message />
+            </a>
+          ) : (
             <Message />
-          </a>
-        ) : (
-          <Message />
-        )}
-      </button>
+          )}
+        </button>
+      ) : null}
       {children}
     </div>
   );

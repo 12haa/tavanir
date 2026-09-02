@@ -1,6 +1,7 @@
 import { Chart, Title, Legend, Tooltip, XAxis, YAxis, PlotOptions } from '@highcharts/react';
 
 import { AreaSplineSeries } from '@highcharts/react/series/AreaSpline';
+import Text from '../../shared/Text';
 
 const hours = [
   '01:00',
@@ -36,8 +37,8 @@ const values = [
 
 export default function PredictionChart() {
   return (
-    <div dir="rtl" className="w-full">
-      <Chart height={330} backgroundColor="transparent">
+    <div dir="rtl" className="w-full py-6">
+      <Chart height={350} backgroundColor="transparent">
         <Title
           align="center"
           style={{
@@ -47,7 +48,7 @@ export default function PredictionChart() {
             color: '#333333',
           }}
         >
-          گزارش پیش بینی روز جاری
+          <Text> گزارش پیش بینی روز جاری</Text>
         </Title>
 
         <Legend enabled={false} />
@@ -59,8 +60,8 @@ export default function PredictionChart() {
           tickLength={0}
           labels={{
             style: {
-              fontFamily: 'DanaFaNum, sans-serif',
-              fontSize: '11px',
+              fontFamily: 'iran, sans-serif',
+              fontSize: '15px',
               color: '#333333',
             },
           }}

@@ -27,7 +27,7 @@ function Home() {
         </div>
       </CustomWrapper>
 
-      <CustomWrapper className="w-full" width={'65%'}>
+      <CustomWrapper className="w-full" width={'65%'} height={600} showMessage={false}>
         <PredictionChart />
       </CustomWrapper>
     </div>
