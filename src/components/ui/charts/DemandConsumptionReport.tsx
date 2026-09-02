@@ -53,7 +53,7 @@ export default function DemandConsumptionReport({
   return (
     <div dir="rtl" className="w-full py-6">
       <Chart
-        height={350}
+        height={400}
         backgroundColor="transparent"
         options={{
           credits: {

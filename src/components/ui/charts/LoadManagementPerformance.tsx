@@ -37,13 +37,13 @@ const defaultHours = [
 ];
 
 const defaultPlannedValues = [
-  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.2, 0.45, 0.7, 0.85, 0.95, 0.8, 0.72, 0.82, 0.78, 0.65, 0.6, 0.6,
-  0.55, 0,
+  0, 0, 0, 0, 0, 0, 0, 0.055, 0, 0, 0.055, 0.135, 0.07, 0.085, 0.095, 0.08, 0.072, 0.082, 0.078,
+  0.065, 0.06, 0.06, 0.055, 0,
 ];
 
 const defaultActualValues = [
-  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.15, 0.4, 0.62, 0.78, 0.88, 0.74, 0.68, 0.76, 0.72, 0.6, 0.58,
-  0.55, 0.5, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.015, 0.04, 0.062, 0.078, 0.088, 0.074, 0.068, 0.076, 0.072, 0.06,
+  0.058, 0.055, 0.05, 0,
 ];
 
 export default function LoadManagementPerformance({
@@ -54,7 +54,7 @@ export default function LoadManagementPerformance({
   return (
     <div dir="rtl" className="w-full py-6">
       <Chart
-        height={350}
+        height={400}
         backgroundColor="transparent"
         options={{
           credits: {
@@ -77,7 +77,7 @@ export default function LoadManagementPerformance({
             color: '#333333',
           }}
         >
-          <Text>برنامه های پیشبینی شده / عملکرد محقق شده مدیریت بار</Text>
+          <Text>برنامه های پیش بینی شده/ عملکرد محقق شده مدیریت بار0</Text>
         </Title>
 
         <Legend
@@ -118,8 +118,8 @@ export default function LoadManagementPerformance({
 
         <YAxis
           min={0}
-          max={1.25}
-          tickInterval={0.25}
+          max={0.15}
+          tickInterval={0.05}
           gridLineColor="#E2E2E2"
           gridLineWidth={1}
           title={{

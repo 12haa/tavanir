@@ -160,7 +160,7 @@ const demandChartData = [
     ],
   },
   {
-    label: 'کا تعرفه ها',
+    label: ' تعرفه کل',
     contracted: [
       0.52, 0.5, 0.48, 0.45, 0.42, 0.38, 0.35, 0.38, 0.45, 0.52, 0.62, 0.72, 0.78, 0.82, 0.85, 0.82,
       0.75, 0.65, 0.58, 0.52, 0.48, 0.45, 0.43, 0.41,
@@ -176,9 +176,79 @@ const demandChartData = [
   },
 ];
 
+const loadManagementData = [
+  {
+    label: 'تولید (صنعت و معدن)',
+    plannedValues: [
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.2, 0.45, 0.7, 0.85, 0.95, 0.8, 0.72, 0.82, 0.78, 0.65, 0.6,
+      0.6, 0.55, 0,
+    ],
+    actualValues: [
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.15, 0.4, 0.62, 0.78, 0.88, 0.74, 0.68, 0.76, 0.72, 0.6, 0.58,
+      0.55, 0.5, 0,
+    ],
+  },
+  {
+    label: 'تولید (آب و کشاورزی)',
+    plannedValues: [
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.18, 0.42, 0.68, 0.82, 0.92, 0.78, 0.7, 0.8, 0.76, 0.62, 0.58,
+      0.58, 0.52, 0,
+    ],
+    actualValues: [
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.12, 0.38, 0.58, 0.72, 0.82, 0.7, 0.62, 0.72, 0.68, 0.55, 0.52,
+      0.5, 0.45, 0,
+    ],
+  },
+  {
+    label: 'مصارف عمومی',
+    plannedValues: [
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.22, 0.48, 0.75, 0.9, 1.0, 0.85, 0.78, 0.88, 0.82, 0.68, 0.65,
+      0.62, 0.58, 0,
+    ],
+    actualValues: [
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.18, 0.42, 0.68, 0.82, 0.92, 0.78, 0.72, 0.82, 0.78, 0.62, 0.6,
+      0.58, 0.52, 0,
+    ],
+  },
+  {
+    label: 'سایر مصارف',
+    plannedValues: [
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.15, 0.38, 0.62, 0.78, 0.88, 0.72, 0.65, 0.75, 0.72, 0.58,
+      0.55, 0.52, 0.48, 0,
+    ],
+    actualValues: [
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1, 0.32, 0.52, 0.65, 0.75, 0.62, 0.55, 0.65, 0.62, 0.5, 0.48,
+      0.45, 0.4, 0,
+    ],
+  },
+  {
+    label: 'مولد خود تامین',
+    plannedValues: [
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.2, 0.45, 0.72, 0.88, 0.98, 0.82, 0.75, 0.85, 0.82, 0.68, 0.65,
+      0.62, 0.58, 0,
+    ],
+    actualValues: [
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.15, 0.4, 0.62, 0.78, 0.88, 0.75, 0.68, 0.78, 0.75, 0.62, 0.58,
+      0.55, 0.5, 0,
+    ],
+  },
+  {
+    label: 'تعرفه کل',
+    plannedValues: [
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.18, 0.42, 0.68, 0.82, 0.92, 0.78, 0.72, 0.82, 0.78, 0.65, 0.6,
+      0.6, 0.55, 0,
+    ],
+    actualValues: [
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.12, 0.35, 0.55, 0.72, 0.82, 0.7, 0.62, 0.72, 0.68, 0.55, 0.52,
+      0.5, 0.45, 0,
+    ],
+  },
+];
+
 function Home() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [demandSelectedIndex, setDemandSelectedIndex] = useState(0);
+  const [loadSelectedIndex, setLoadSelectedIndex] = useState(0);
 
   return (
     <div className="flex flex-col gap-4 pb-24">
@@ -191,8 +261,8 @@ function Home() {
           <IranMap height={500} width={500} className="max-w-full h-auto" />
         </div>
 
-        <div className="flex flex-col items-center justify-center w-full md:w-auto">
-          <div className="w-full max-w-[350px] lg:max-w-[550px]">
+        <div className="flex flex-col items-center justify-center md:max-w-[550px] w-auto">
+          <div className="w-full ">
             <ColumnDrilldownChart />
           </div>
 
@@ -285,8 +355,8 @@ function Home() {
       <div className="flex gap-2 items-center justify-center">
         <CustomWrapper
           className="w-full flex flex-col items-center"
-          width="60%"
-          showMessage={false}
+          width="50%"
+          showMessage={true}
           height={580}
         >
           <DemandConsumptionReport
@@ -309,8 +379,24 @@ function Home() {
           </div>
         </CustomWrapper>
 
-        <CustomWrapper width="40%" showMessage={false} height={580}>
-          <LoadManagementPerformance />
+        <CustomWrapper width="50%" showMessage={true} height={580}>
+          <LoadManagementPerformance
+            hours={hours}
+            plannedValues={loadManagementData[loadSelectedIndex].plannedValues}
+            actualValues={loadManagementData[loadSelectedIndex].actualValues}
+          />
+
+          <div className="flex flex-wrap justify-center gap-2 mt-4">
+            {loadManagementData.map((item, index) => (
+              <ChartButton
+                key={index}
+                selected={loadSelectedIndex === index}
+                onClick={() => setLoadSelectedIndex(index)}
+              >
+                {item.label}
+              </ChartButton>
+            ))}
+          </div>
         </CustomWrapper>
       </div>
     </div>
