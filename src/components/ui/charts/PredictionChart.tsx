@@ -1,6 +1,6 @@
 import { Chart, Title, Legend, Tooltip, XAxis, YAxis, PlotOptions } from '@highcharts/react';
 
-import { AreaSplineSeries } from '@highcharts/react/series/AreaSpline';
+import { AreaSeries } from '@highcharts/react/series/Area';
 import Text from '../../shared/Text';
 
 export interface PredictionChartProps {
@@ -127,13 +127,11 @@ export default function PredictionChart({
         />
 
         <PlotOptions
-          areaspline={{
+          area={{
             lineWidth: 2.5,
-
             marker: {
               enabled: false,
             },
-
             fillColor: {
               linearGradient: {
                 x1: 0,
@@ -150,7 +148,7 @@ export default function PredictionChart({
           }}
         />
 
-        <AreaSplineSeries name="بار کاهش یافته" data={values} color="#00AEEF" />
+        <AreaSeries name="بار کاهش یافته" data={values} color="#00AEEF" />
       </Chart>
     </div>
   );

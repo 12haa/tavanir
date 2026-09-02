@@ -6,6 +6,7 @@ import Text from '../../shared/Text';
 export interface DemandConsumptionReportProps {
   hours?: string[];
   values?: number[];
+  areaValues?: number[];
 }
 
 const defaultHours = [
@@ -37,11 +38,16 @@ const defaultHours = [
 
 const defaultValues = new Array(defaultHours.length).fill(0);
 
+const defaultAreaValues = [
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.2, 0.45, 0.7, 0.85, 0.95, 0.8, 0.72, 0.82, 0.78, 0.65, 0.6, 0.6,
+  0.55, 0,
+];
+
 export default function DemandConsumptionReport({
   hours = defaultHours,
   values = defaultValues,
+  areaValues = defaultAreaValues,
 }: DemandConsumptionReportProps) {
-  // Always render a flat line at zero.
   const zeroValues = new Array(hours.length).fill(0);
 
   return (
@@ -73,7 +79,18 @@ export default function DemandConsumptionReport({
           <Text>گزارش تقاضا و مصرف</Text>
         </Title>
 
-        <Legend enabled={false} />
+        <Legend
+          enabled={true}
+          align="center"
+          verticalAlign="bottom"
+          layout="horizontal"
+          itemStyle={{
+            fontFamily: 'iran, sans-serif',
+            fontSize: '13px',
+            fontWeight: '400',
+            color: '#333333',
+          }}
+        />
 
         <XAxis
           categories={hours}
@@ -173,6 +190,17 @@ export default function DemandConsumptionReport({
             },
           }}
         />
+
+        {/* <AreaSeries
+          name="مصرف واقعی"
+          data={areaValues}
+          color="#00AEEF"
+          options={{
+            animation: {
+              duration: 3500,
+            },
+          }}
+        /> */}
       </Chart>
     </div>
   );
