@@ -11,6 +11,14 @@ export default function ColumnDrilldownChart() {
     <div className="w-full">
       <Chart
         options={{
+          chart: {
+            type: 'column',
+            reflow: true,
+            style: {
+              fontFamily: 'inherit',
+            },
+          },
+
           credits: {
             enabled: false,
           },
@@ -19,6 +27,21 @@ export default function ColumnDrilldownChart() {
             announceNewData: {
               enabled: true,
             },
+          },
+
+          responsive: {
+            rules: [
+              {
+                condition: {
+                  maxWidth: 500,
+                },
+                chartOptions: {
+                  legend: {
+                    enabled: false,
+                  },
+                },
+              },
+            ],
           },
 
           // X-axis styling
