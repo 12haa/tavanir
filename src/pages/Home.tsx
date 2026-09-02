@@ -81,8 +81,55 @@ const chartData = [
   },
 ];
 
+// distinct dummy data for Demand chart so each button visibly re-animates (same labels as PredictionChart)
+const demandChartData = [
+  {
+    label: 'تولید (صنعت و معدن)',
+    values: [
+      0.15, 0.12, 0.1, 0.08, 0.05, 0.1, 0.25, 0.45, 0.68, 0.85, 1.05, 1.15, 1.18, 1.1, 0.95, 0.78,
+      0.62, 0.55, 0.48, 0.38, 0.28, 0.2, 0.15, 0.12,
+    ],
+  },
+  {
+    label: 'تولید (آب و کشاورزی)',
+    values: [
+      0.05, 0.04, 0.03, 0.02, 0.02, 0.05, 0.15, 0.3, 0.5, 0.68, 0.88, 0.98, 1.05, 0.98, 0.82, 0.65,
+      0.48, 0.35, 0.28, 0.22, 0.18, 0.12, 0.08, 0.06,
+    ],
+  },
+  {
+    label: 'مصارف عمومی',
+    values: [
+      0.3, 0.28, 0.26, 0.24, 0.22, 0.2, 0.18, 0.22, 0.35, 0.55, 0.72, 0.85, 0.92, 0.88, 0.75, 0.62,
+      0.52, 0.62, 0.78, 0.95, 1.12, 1.18, 1.05, 0.6,
+    ],
+  },
+  {
+    label: 'سایر مصارف',
+    values: [
+      0.08, 0.07, 0.06, 0.05, 0.04, 0.06, 0.12, 0.2, 0.32, 0.48, 0.62, 0.75, 0.82, 0.78, 0.65, 0.5,
+      0.38, 0.28, 0.2, 0.15, 0.12, 0.1, 0.09, 0.08,
+    ],
+  },
+  {
+    label: 'مولد خود تامین',
+    values: [
+      0.02, 0.02, 0.02, 0.03, 0.05, 0.12, 0.28, 0.52, 0.78, 0.98, 1.12, 1.2, 1.22, 1.15, 1.0, 0.85,
+      0.68, 0.52, 0.35, 0.18, 0.08, 0.04, 0.02, 0.02,
+    ],
+  },
+  {
+    label: 'کا تعرفه ها',
+    values: [
+      0.42, 0.4, 0.38, 0.35, 0.32, 0.28, 0.25, 0.28, 0.32, 0.38, 0.42, 0.48, 0.55, 0.62, 0.68, 0.72,
+      0.68, 0.6, 0.52, 0.48, 0.45, 0.43, 0.42, 0.41,
+    ],
+  },
+];
+
 function Home() {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [demandSelectedIndex, setDemandSelectedIndex] = useState(0);
 
   return (
     <div className="flex flex-col gap-4 pb-24">
@@ -186,8 +233,28 @@ function Home() {
           ))}
         </CustomWrapper>
       </div>
-      <CustomWrapper width="73%" showMessage={false} height={580}>
-        <DemandConsumptionReport />
+      <CustomWrapper
+        className="w-full flex flex-col items-center"
+        width="50%"
+        showMessage={false}
+        height={580}
+      >
+        <DemandConsumptionReport
+          hours={hours}
+          values={demandChartData[demandSelectedIndex].values}
+        />
+
+        <div className="flex flex-wrap justify-center gap-2 mt-4">
+          {demandChartData.map((item, index) => (
+            <ChartButton
+              key={index}
+              selected={demandSelectedIndex === index}
+              onClick={() => setDemandSelectedIndex(index)}
+            >
+              {item.label}
+            </ChartButton>
+          ))}
+        </div>
       </CustomWrapper>
     </div>
   );
