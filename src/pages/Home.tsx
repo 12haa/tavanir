@@ -8,6 +8,7 @@ import ColumnDrilldownChart from '../components/ui/charts/ColumnDrilldownChart';
 import MapLegend from '../components/ui/charts/MapLegend';
 import PredictionChart from '../components/ui/charts/PredictionChart';
 import DemandConsumptionReport from '../components/ui/charts/DemandConsumptionReport';
+import LoadManagementPerformance from '../components/ui/charts/LoadManagementPerformance';
 
 const hours = [
   '01:00',
@@ -233,29 +234,35 @@ function Home() {
           ))}
         </CustomWrapper>
       </div>
-      <CustomWrapper
-        className="w-full flex flex-col items-center"
-        width="50%"
-        showMessage={false}
-        height={580}
-      >
-        <DemandConsumptionReport
-          hours={hours}
-          values={demandChartData[demandSelectedIndex].values}
-        />
+      <div className="flex gap-2 items-center justify-center">
+        <CustomWrapper
+          className="w-full flex flex-col items-center"
+          width="60%"
+          showMessage={false}
+          height={580}
+        >
+          <DemandConsumptionReport
+            hours={hours}
+            values={demandChartData[demandSelectedIndex].values}
+          />
 
-        <div className="flex flex-wrap justify-center gap-2 mt-4">
-          {demandChartData.map((item, index) => (
-            <ChartButton
-              key={index}
-              selected={demandSelectedIndex === index}
-              onClick={() => setDemandSelectedIndex(index)}
-            >
-              {item.label}
-            </ChartButton>
-          ))}
-        </div>
-      </CustomWrapper>
+          <div className="flex flex-wrap justify-center gap-2 mt-4">
+            {demandChartData.map((item, index) => (
+              <ChartButton
+                key={index}
+                selected={demandSelectedIndex === index}
+                onClick={() => setDemandSelectedIndex(index)}
+              >
+                {item.label}
+              </ChartButton>
+            ))}
+          </div>
+        </CustomWrapper>
+
+        <CustomWrapper width="40%" showMessage={false} height={580}>
+          <LoadManagementPerformance />
+        </CustomWrapper>
+      </div>
     </div>
   );
 }
