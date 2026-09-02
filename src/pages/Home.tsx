@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import IranMap from '../assets/svg/iranMap';
 import CustomWrapper from '../components/shared/Wrapper';
-import CustomButton from '../components/ui/charts/ChartButton';
+import Divider from '../components/shared/Divider';
+import Text from '../components/shared/Text';
+import ChartButton from '../components/ui/charts/ChartButton';
 import ColumnDrilldownChart from '../components/ui/charts/ColumnDrilldownChart';
 import MapLegend from '../components/ui/charts/MapLegend';
 import PredictionChart from '../components/ui/charts/PredictionChart';
+import DemandConsumptionReport from '../components/ui/charts/DemandConsumptionReport';
 
 const hours = [
   '01:00',
@@ -83,44 +86,108 @@ function Home() {
 
   return (
     <div className="flex flex-col gap-4 pb-24">
+      {/* Top section */}
       <CustomWrapper
         className="w-full flex flex-col md:flex-row py-12 gap-2 items-center justify-between"
-        width={'100%'}
+        width="100%"
       >
         <div className="w-full md:w-auto flex justify-center">
           <IranMap height={500} width={500} className="max-w-full h-auto" />
         </div>
+
         <div className="flex flex-col items-center justify-center w-full md:w-auto">
-          <div className="w-full max-w-[350px]">
+          <div className="w-full max-w-[350px] lg:max-w-[550px]">
             <ColumnDrilldownChart />
           </div>
+
           <div>
             <MapLegend />
           </div>
         </div>
+
         <div className="w-full md:w-auto flex justify-center">
           <IranMap height={500} width={500} className="max-w-full h-auto" />
         </div>
       </CustomWrapper>
 
-      <CustomWrapper
-        className="w-full flex flex-col items-center"
-        width={'65%'}
-        height={600}
-        showMessage={false}
-      >
-        <PredictionChart hours={hours} values={chartData[selectedIndex].values} />
-        <div className="flex flex-wrap justify-center gap-2 mt-4">
-          {chartData.map((item, index) => (
-            <CustomButton
-              key={index}
-              selected={selectedIndex === index}
-              onClick={() => setSelectedIndex(index)}
-            >
-              {item.label}
-            </CustomButton>
+      {/* Bottom section */}
+      <div className="flex gap-4 items-start">
+        {/* Prediction chart */}
+        <CustomWrapper
+          className="flex-5/5 flex flex-col items-center"
+          width="75%"
+          height={580}
+          showMessage={false}
+        >
+          <PredictionChart hours={hours} values={chartData[selectedIndex].values} />
+
+          <div className="flex flex-wrap justify-center gap-2 mt-4">
+            {chartData.map((item, index) => (
+              <ChartButton
+                key={index}
+                selected={selectedIndex === index}
+                onClick={() => setSelectedIndex(index)}
+              >
+                {item.label}
+              </ChartButton>
+            ))}
+          </div>
+        </CustomWrapper>
+
+        {/* Actions / discrepancies */}
+        <CustomWrapper className="flex-2/5" width="25%" showMessage={false} height={580}>
+          <div className="flex items-center justify-between gap-4 pt-8 pb-2">
+            <Text className="text-md font-semibold text-black">مغایرت / نیازمند اقدام</Text>
+
+            <Text className="text-md font-semibold ml-20 text-black shrink-0">تعداد</Text>
+          </div>
+
+          <Divider className="my-1" />
+
+          {[
+            {
+              text: 'دیماند قراردادی و دیماند مصرفی مشترکین',
+              number: 0,
+            },
+            {
+              text: 'ضرایب کنتور',
+              number: 1,
+            },
+            {
+              text: 'تکمیل سقف همکاری مولد خودتامین',
+              number: 0,
+            },
+            {
+              text: 'فرم های تکمیل نشده',
+              number: 0,
+            },
+            {
+              text: 'تکمیل برآورد انرژی شهریور ماه مولدهای متقاضی سوخت',
+              number: 0,
+            },
+          ].map((item, index) => (
+            <div key={index} className="w-full min-w-0">
+              <div className="flex items-center justify-between gap-3 py-3 w-full min-w-0">
+                {/* Text is allowed to shrink */}
+                <Text className="text-md text-black flex-1 min-w-0">{item.text}</Text>
+
+                {/* Number + button must never shrink */}
+                <div className="flex items-center gap-2 shrink-0">
+                  <Text className="text-md font-medium text-black shrink-0">{item.number}</Text>
+
+                  <ChartButton selected className="shrink-0 whitespace-nowrap">
+                    دریافت فایل
+                  </ChartButton>
+                </div>
+              </div>
+
+              {index < 2 && <Divider className="my-1" />}
+            </div>
           ))}
-        </div>
+        </CustomWrapper>
+      </div>
+      <CustomWrapper width="73%" showMessage={false} height={580}>
+        <DemandConsumptionReport />
       </CustomWrapper>
     </div>
   );

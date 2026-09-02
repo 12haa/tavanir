@@ -44,4 +44,7 @@ export const colors = {
     columnHover: '#fffad3',
     axisText: '#363630',
   },
+  divider: {
+    100: '#e4e7ec',
+  },
 } as const;
