@@ -18,7 +18,7 @@ function Tabs({ tabs }: TabsProps) {
   const selectedTab = tabs.find((tab) => tab.id === selectedId);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2 ">
       <div className="flex flex-wrap gap-2">
         {tabs.map((tab) => (
           <TabButton
@@ -31,7 +31,7 @@ function Tabs({ tabs }: TabsProps) {
         ))}
       </div>
 
-      <div className="mt-4">{selectedTab?.content}</div>
+      <div className="">{selectedTab?.content}</div>
     </div>
   );
 }

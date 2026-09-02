@@ -1,7 +1,8 @@
 import Text from '../components/shared/Text';
+import CustomWrapper from '../components/shared/Wrapper';
 import Tabs from '../components/ui/tabs/Tabs';
 
-const tabs = [
+const tabContents = [
   { id: 1, label: 'گزارش عملکرد', content: <Text>محتوای گزارش عملکرد</Text> },
   { id: 2, label: 'گزارش پیش بینی', content: <Text>محتوای گزارش پیش بینی</Text> },
   { id: 3, label: 'گزارش مدیریت بار', content: <Text>محتوای گزارش مدیریت بار</Text> },
@@ -11,9 +12,13 @@ const tabs = [
   { id: 7, label: 'گزارش تکمیلی', content: <Text>محتوای گزارش تکمیلی</Text> },
 ];
 
+const tabs = tabContents.map((tab) => ({
+  ...tab,
+  content: <CustomWrapper className=" min-w-full rounded-md">{tab.content}</CustomWrapper>,
+}));
 function ActivityReport() {
   return (
-    <div className="flex flex-col gap-4 pb-24">
+    <div className="flex flex-col gap-3 pb-24">
       <Text className="text-2xl font-bold text-center">گزارش فعالیت</Text>
       <Tabs tabs={tabs} />
     </div>
