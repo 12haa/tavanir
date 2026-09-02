@@ -1,4 +1,6 @@
 import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
+import { twMerge } from 'tailwind-merge';
+import { colors } from '../../lib/theme';
 
 type TextProps<C extends ElementType = 'p'> = {
   as?: C;
@@ -6,10 +8,21 @@ type TextProps<C extends ElementType = 'p'> = {
   className?: string;
 } & ComponentPropsWithoutRef<C>;
 
-function Text<C extends ElementType = 'p'>({ as, className = '', children, ...rest }: TextProps<C>) {
+const DEFAULT_CLASSES = `font-iran `;
+
+function Text<C extends ElementType = 'p'>({
+  as,
+  className = '',
+  children,
+  ...rest
+}: TextProps<C>) {
   const Component = as || 'p';
   return (
-    <Component className={className} {...rest}>
+    <Component
+      className={twMerge(DEFAULT_CLASSES, className)}
+      {...rest}
+      style={{ color: colors.primaryTextColor[100] }}
+    >
       {children}
     </Component>
   );

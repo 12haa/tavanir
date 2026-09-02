@@ -1,6 +1,7 @@
 import IranMap from '../assets/svg/iranMap';
 import CustomWrapper from '../components/shared/CustomWrapper';
 import ColumnDrilldownChart from '../components/ui/charts/ColumnDrilldownChart';
+import MapLegend from '../components/ui/charts/MapLegend';
 
 function Home() {
   return (
@@ -12,8 +13,13 @@ function Home() {
         <div>
           <IranMap height={500} width={500} />
         </div>
-        <div className="w-[450px]">
-          <ColumnDrilldownChart />
+        <div className="flex flex-col items-center justify-center">
+          <div className="w-[450px]">
+            <ColumnDrilldownChart />
+          </div>
+          <div>
+            <MapLegend />
+          </div>
         </div>
         <div>
           <IranMap height={500} width={500} />
