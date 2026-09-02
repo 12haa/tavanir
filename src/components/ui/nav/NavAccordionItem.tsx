@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { colors } from '../../../lib/theme';
 import { type NavMenuItem } from '../../../constants/nav';
 import ArrowRight from '../../../assets/icons/ArrowRight';
@@ -14,13 +15,19 @@ interface NavAccordionItemProps {
 function NavAccordionItem({ item, isOpen, onToggle }: NavAccordionItemProps) {
   const hasChildren = !!item.children?.length;
   const ref = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isOpen) {
-      // scroll the opened accordion into view inside the panel's scroll container
       ref.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }, [isOpen]);
+
+  const handleChildClick = (route: string) => {
+    if (route) {
+      navigate(route);
+    }
+  };
 
   return (
     <div ref={ref} className="flex flex-col">
@@ -62,6 +69,7 @@ function NavAccordionItem({ item, isOpen, onToggle }: NavAccordionItemProps) {
                 <button
                   key={child.id}
                   type="button"
+                  onClick={() => handleChildClick(child.route)}
                   className="flex items-start gap-3 py-1.5 text-right cursor-pointer"
                 >
                   <Dot

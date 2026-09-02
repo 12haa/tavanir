@@ -94,7 +94,7 @@ export const navMenu: NavMenuItem[] = [
       {
         id: 4004,
         menuTitle: 'گزارش های عملکرد کاهش بار',
-        route: '/reports/monthly',
+        route: '/activity-report',
       },
       {
         id: 4004,
