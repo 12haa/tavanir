@@ -280,6 +280,10 @@ interface Ctx {
   today: JalaliDate;
 }
 
+function stripPersianDigits(str: string): string {
+  return String(str).replace(/[۰-۹]/g, (ch) => String(PERSIAN_DIGITS.indexOf(ch)));
+}
+
 interface ResolvedOptions {
   hasSecond: boolean;
   time: boolean;
@@ -452,7 +456,7 @@ function isDateInRange(ctx: Ctx, year: number, month: number, day: number): bool
 
 function validateDateString(ctx: Ctx, str: string): boolean {
   if (!str) return false;
-  const parts = String(str).slice(0, 10).split(ctx.sep.date);
+  const parts = String(stripPersianDigits(str)).slice(0, 10).split(ctx.sep.date);
   return parts.length === 3 && parts[0].length === 4 && parts[1].length === 2 && parts[2].length === 2;
 }
 
@@ -464,7 +468,7 @@ function validateTimeString(ctx: Ctx, str: string): boolean {
 }
 
 function parseValue(ctx: Ctx, str: string): JalaliDateTime {
-  const parts = str.split(ctx.sep.between);
+  const parts = stripPersianDigits(str).split(ctx.sep.between);
   const datePart = ctx.date
     ? (parts[0] || '').split(ctx.sep.date)
     : ({} as JalaliDateTime);
@@ -486,14 +490,13 @@ function parseValue(ctx: Ctx, str: string): JalaliDateTime {
 }
 
 function formatValue(ctx: Ctx, value: JalaliDateTime): string {
+  const d = (n: number | undefined) => toDisplay(n ?? 0, ctx.persianDigits);
   const datePart = ctx.date
-    ? `${value.year}${ctx.sep.date}${pad(Number(value.month))}${ctx.sep.date}${pad(
-        Number(value.day),
-      )}`
+    ? `${d(value.year)}${ctx.sep.date}${d(Number(value.month))}${ctx.sep.date}${d(Number(value.day))}`
     : '';
   const timePart = ctx.time
-    ? `${pad(Number(value.hour))}${ctx.sep.time}${pad(Number(value.minute))}` +
-      (ctx.hasSecond ? `${ctx.sep.time}${pad(Number(value.second))}` : '')
+    ? `${d(Number(value.hour))}${ctx.sep.time}${d(Number(value.minute))}` +
+      (ctx.hasSecond ? `${ctx.sep.time}${d(Number(value.second))}` : '')
     : '';
   return datePart + (datePart && timePart ? ctx.sep.between : '') + timePart;
 }
@@ -1140,6 +1143,7 @@ function JalaliDatepicker(
 
 
 function formatTodayDate(options: ResolvedOptions, today: JalaliDate): string {
-  return `${today.year}${options.sep.date}${pad(today.month)}${options.sep.date}${pad(today.day)}`;
+  const d = (n: number) => toDisplay(n, options.persianDigits);
+  return `${d(today.year)}${options.sep.date}${d(today.month)}${options.sep.date}${d(today.day)}`;
 }
 export default forwardRef(JalaliDatepicker);
