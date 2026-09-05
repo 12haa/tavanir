@@ -1,16 +1,9 @@
 import Text from '../components/shared/Text';
 import CustomWrapper from '../components/shared/Wrapper';
 import Tabs from '../components/ui/tabs/Tabs';
+import { tabContents } from '../constants/activity-report-tabs';
 
-const tabContents = [
-  { id: 1, label: 'گزارش عملکرد', content: <Text>محتوای گزارش عملکرد</Text> },
-  { id: 2, label: 'گزارش پیش بینی', content: <Text>محتوای گزارش پیش بینی</Text> },
-  { id: 3, label: 'گزارش مدیریت بار', content: <Text>محتوای گزارش مدیریت بار</Text> },
-  { id: 4, label: 'گزارش مصرف', content: <Text>محتوای گزارش مصرف</Text> },
-  { id: 5, label: 'گزارش تقاضا', content: <Text>محتوای گزارش تقاضا</Text> },
-  { id: 6, label: 'گزارش پاداش', content: <Text>محتوای گزارش پاداش</Text> },
-  { id: 7, label: 'گزارش تکمیلی', content: <Text>محتوای گزارش تکمیلی</Text> },
-];
+
 
 const tabs = tabContents.map((tab) => ({
   ...tab,
