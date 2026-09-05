@@ -56,6 +56,8 @@ export interface JalaliDatepickerProps {
   className?: string;
   placeholder?: string;
   name?: string;
+  /** Label shown above the input */
+  label?: string;
 
   /* ---- options (mirror jalalidatepicker options) ---- */
   days?: string[];
@@ -659,7 +661,9 @@ function JalaliDatepicker(
   }, []);
 
   const isControlled = props.value !== undefined;
-  const [internalValue, setInternalValue] = useState(() => props.defaultValue ?? '');
+  const initialValue =
+    props.defaultValue ?? (!isControlled && !props.value ? formatTodayDate(options, today) : props.value ?? '');
+  const [internalValue, setInternalValue] = useState(() => initialValue);
   const value = isControlled ? props.value ?? '' : internalValue;
 
   const [open, setOpen] = useState(false);
@@ -927,6 +931,11 @@ function JalaliDatepicker(
 
   return (
     <div className="jdp-wrap" ref={wrapperRef} style={{ position: 'relative', display: 'inline-block' }}>
+      {props.label && (
+        <label className="text-md font-normal text-gray-700 font-iran block mb-1">
+          {props.label}
+        </label>
+      )}
       <input
         ref={(el) => {
           inputRef.current = el;
@@ -937,7 +946,7 @@ function JalaliDatepicker(
         value={value}
         readOnly={options.autoReadOnlyInput}
         placeholder={props.placeholder}
-        className={props.className}
+        className={['jdp-input', props.className].filter(Boolean).join(' ')}
         data-jdp-only-date={props.onlyDate ? '' : undefined}
         data-jdp-only-time={props.onlyTime ? '' : undefined}
         onClick={(e) => e.currentTarget.focus()}
@@ -1129,4 +1138,8 @@ function JalaliDatepicker(
   );
 }
 
+
+function formatTodayDate(options: ResolvedOptions, today: JalaliDate): string {
+  return `${today.year}${options.sep.date}${pad(today.month)}${options.sep.date}${pad(today.day)}`;
+}
 export default forwardRef(JalaliDatepicker);

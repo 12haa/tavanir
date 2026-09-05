@@ -6,6 +6,14 @@ import JalaliDatepicker from '../datepicker/JalaliDatepicker';
 function ComprehensiveReport() {
   const [reportType, setReportType] = useState('comprehensive');
 
+  const today = new Date();
+
+  const jalaliDate = new Intl.DateTimeFormat('persian', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(today);
+
   return (
     <CustomWrapper
       className="min-w-full rounded-md min-h-125 py-5 px-6"
@@ -31,7 +39,11 @@ function ComprehensiveReport() {
           onChange={(e) => setReportType(e.target.value)}
         />
       </div>
-      <JalaliDatepicker />
+      <div className="mt-4 w-full">
+        <div>
+          <JalaliDatepicker defaultValue="" placeholder={jalaliDate}  />
+        </div>
+      </div>
     </CustomWrapper>
   );
 }

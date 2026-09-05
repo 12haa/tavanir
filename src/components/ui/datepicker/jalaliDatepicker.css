@@ -426,3 +426,27 @@
     opacity: 1;
   }
 }
+/* ------------------------------------------------------ reusable input base (for DropDown/Select reuse) */
+
+.jdp-input {
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-family, 'iran', sans-serif);
+  font-size: 0.875rem;
+  outline: none;
+  width: 100%;
+  background: #ffffff;
+  color: #363630;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.jdp-input::placeholder {
+  color: #7a7a7a;
+}
+
+.jdp-input:focus {
+  border-color: #fc9e29;
+  box-shadow: 0 0 0 3px rgba(252, 158, 41, 0.25);
+}
