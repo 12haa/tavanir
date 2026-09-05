@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import CustomWrapper from '../../shared/Wrapper';
 import Radio from '../../shared/Radio';
+import JalaliDatepicker from '../datepicker/JalaliDatepicker';
 
 function ComprehensiveReport() {
   const [reportType, setReportType] = useState('comprehensive');
@@ -20,7 +21,6 @@ function ComprehensiveReport() {
           value="comprehensive"
           checked={reportType === 'comprehensive'}
           onChange={(e) => setReportType(e.target.value)}
-
         />
         <Radio
           label=" ورژن 2 تعداد مشترکین ثبت نام شده: همه مشترکین ثبت نام شده
@@ -29,9 +29,9 @@ function ComprehensiveReport() {
           value="reward"
           checked={reportType === 'reward'}
           onChange={(e) => setReportType(e.target.value)}
-
         />
       </div>
+      <JalaliDatepicker />
     </CustomWrapper>
   );
 }
