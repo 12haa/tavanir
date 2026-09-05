@@ -39,29 +39,7 @@ function ForecastReport() {
       showExcel={true}
       showSearch={true}
     >
-      <div className="mt-5 flex justify-start gap-40">
-        <Radio
-          label=" سناریو اول پیش بینیtemperature"
-          name="forecast-reportType"
-          value="scenario-a"
-          checked={reportType === 'scenario-a'}
-          onChange={(e) => setReportType(e.target.value)}
-        />
-        <Radio
-          label=" سناریو دوم پیش بینی گرما"
-          name="forecast-reportType"
-          value="scenario-b"
-          checked={reportType === 'scenario-b'}
-          onChange={(e) => setReportType(e.target.value)}
-        />
-        <Radio
-          label=" سناریو سوم پیش بینی باران"
-          name="forecast-reportType"
-          value="scenario-c"
-          checked={reportType === 'scenario-c'}
-          onChange={(e) => setReportType(e.target.value)}
-        />
-      </div>
+     
       <div className="mt-12 w-full flex flex-col gap-6">
         <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-6">
           <JalaliDatepicker

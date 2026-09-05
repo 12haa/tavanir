@@ -40,22 +40,7 @@ function ForecastMinMax() {
       showExcel={true}
       showSearch={true}
     >
-      <div className="mt-5 flex justify-start gap-40">
-        <Radio
-          label="minmax-a"
-          name="minmax-reportType"
-          value="minmax-a"
-          checked={reportType === 'minmax-a'}
-          onChange={(e) => setReportType(e.target.value)}
-        />
-        <Radio
-          label="minmax-b"
-          name="minmax-reportType"
-          value="minmax-b"
-          checked={reportType === 'minmax-b'}
-          onChange={(e) => setReportType(e.target.value)}
-        />
-      </div>
+      
       <div className="mt-12 w-full flex flex-col gap-6">
         {/* Top – 5 columns: 2 dates + 3 selects (extra) */}
         <div className="w-full grid grid-cols-1 md:grid-cols-5 gap-6">

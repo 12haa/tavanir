@@ -39,22 +39,6 @@ function ForecastDailyReport() {
       showExcel={true}
       showSearch={true}
     >
-      <div className="mt-5 flex justify-start gap-40">
-        <Radio
-          label="daily-a"
-          name="daily-reportType"
-          value="daily-a"
-          checked={reportType === 'daily-a'}
-          onChange={(e) => setReportType(e.target.value)}
-        />
-        <Radio
-          label="daily-b"
-          name="daily-reportType"
-          value="daily-b"
-          checked={reportType === 'daily-b'}
-          onChange={(e) => setReportType(e.target.value)}
-        />
-      </div>
       <div className="mt-12 w-full flex flex-col gap-6">
         <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-6">
           <JalaliDatepicker

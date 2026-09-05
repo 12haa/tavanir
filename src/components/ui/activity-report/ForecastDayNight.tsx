@@ -39,22 +39,6 @@ function ForecastDayNight() {
       showExcel={true}
       showSearch={true}
     >
-      <div className="mt-5 flex justify-start gap-40">
-        <Radio
-          label="daynight-a"
-          name="daynight-reportType"
-          value="daynight-a"
-          checked={reportType === 'daynight-a'}
-          onChange={(e) => setReportType(e.target.value)}
-        />
-        <Radio
-          label="daynight-b"
-          name="daynight-reportType"
-          value="daynight-b"
-          checked={reportType === 'daynight-b'}
-          onChange={(e) => setReportType(e.target.value)}
-        />
-      </div>
       <div className="mt-12 w-full flex flex-col gap-6">
         <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-6">
           <JalaliDatepicker
