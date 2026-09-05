@@ -91,7 +91,37 @@ function ComprehensiveReport() {
         </div>
 
         {/* Dropdowns – same border/shadow as datepicker (.jdp-input) via select.css */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <MultiSelect
+            label="شرکت‌های توزیع"
+            placeholder="انتخاب شرکت‌ها"
+            options={multiOptions}
+            value={multiValue}
+            onChange={setMultiValue}
+            searchable
+            multiple
+            searchPlaceholder="جستجو..."
+          />
+          <MultiSelect
+            label="شرکت‌های توزیع"
+            placeholder="انتخاب شرکت‌ها"
+            options={multiOptions}
+            value={multiValue}
+            onChange={setMultiValue}
+            searchable
+            multiple
+            searchPlaceholder="جستجو..."
+          />
+          <MultiSelect
+            label="شرکت‌های توزیع"
+            placeholder="انتخاب شرکت‌ها"
+            options={multiOptions}
+            value={multiValue}
+            onChange={setMultiValue}
+            searchable
+            multiple
+            searchPlaceholder="جستجو..."
+          />
           <MultiSelect
             label="شرکت‌های توزیع"
             placeholder="انتخاب شرکت‌ها"

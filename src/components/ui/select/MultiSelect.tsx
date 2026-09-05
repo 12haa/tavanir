@@ -40,7 +40,7 @@ export default function MultiSelect({
 }: MultiSelectProps) {
   const isControlled = value !== undefined;
   const [internal, setInternal] = useState<string[]>(defaultValue ?? []);
-  const selectedValues = isControlled ? value ?? [] : internal;
+  const selectedValues = isControlled ? (value ?? []) : internal;
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -62,7 +62,9 @@ export default function MultiSelect({
   const filtered = useMemo(() => {
     if (!searchable || !query.trim()) return options;
     const q = query.trim().toLowerCase();
-    return options.filter((o) => o.label.toLowerCase().includes(q) || o.value.toLowerCase().includes(q));
+    return options.filter(
+      (o) => o.label.toLowerCase().includes(q) || o.value.toLowerCase().includes(q),
+    );
   }, [options, query, searchable]);
 
   const toggle = (val: string, isDisabled?: boolean) => {
@@ -80,7 +82,9 @@ export default function MultiSelect({
     onChange?.(next);
   };
 
-  const selectedLabels = options.filter((o) => selectedValues.includes(o.value)).map((o) => o.label);
+  const selectedLabels = options
+    .filter((o) => selectedValues.includes(o.value))
+    .map((o) => o.label);
 
   let display: string;
   if (selectedLabels.length === 0) display = '';
@@ -96,11 +100,13 @@ export default function MultiSelect({
         type="button"
         disabled={disabled}
         onClick={() => !disabled && setOpen((v) => !v)}
-        className={`cselect-trigger ${open ? 'cselect-open' : ''} ${disabled ? 'cselect-disabled' : ''}`}
+        className={`cselect-trigger ${open ? 'cselect-open' : ''} ${disabled ? 'cselect-disabled' : ''} w-full`}
         aria-haspopup="listbox"
         aria-expanded={open}
       >
-        <span className={`cselect-value ${selectedValues.length === 0 ? 'cselect-placeholder' : ''}`}>
+        <span
+          className={`cselect-value ${selectedValues.length === 0 ? 'cselect-placeholder' : ''}`}
+        >
           {selectedValues.length === 0 ? placeholder : display}
         </span>
         {/* badge count when many */}
@@ -108,7 +114,13 @@ export default function MultiSelect({
           <span className="cselect-tag">{selectedValues.length}</span>
         )}
         <svg className="cselect-caret" viewBox="0 0 20 20" fill="none">
-          <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M5 7.5L10 12.5L15 7.5"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </button>
 
