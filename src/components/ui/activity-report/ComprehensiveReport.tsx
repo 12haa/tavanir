@@ -26,8 +26,12 @@ function ComprehensiveReport() {
     { value: '5', label: 'شرکت توزیع برق تبریز' },
   ];
 
-  const [simpleValue, setSimpleValue] = useState('');
-  const [multiValue, setMultiValue] = useState<string[]>([]);
+  const [weeklyRange, setWeeklyRange] = useState('');
+  const [registerType, setRegisterType] = useState('');
+  const [companyA, setCompanyA] = useState<string[]>([]);
+  const [companyB, setCompanyB] = useState<string[]>([]);
+  const [companyC, setCompanyC] = useState<string[]>([]);
+  const [companyD, setCompanyD] = useState<string[]>([]);
 
   console.log('🚀 ~ ComprehensiveReport ~ startDate:', startDate, 'endDate:', endDate);
 
@@ -77,16 +81,16 @@ function ComprehensiveReport() {
             label="بازه های هفتگی "
             placeholder="انتخاب "
             options={simpleOptions}
-            value={simpleValue}
-            onChange={setSimpleValue}
+            value={weeklyRange}
+            onChange={setWeeklyRange}
             className="min-w-full "
           />
           <Select
             label="نوع ثبت نام"
             placeholder="انتخاب نوع"
             options={simpleOptions}
-            value={simpleValue}
-            onChange={setSimpleValue}
+            value={registerType}
+            onChange={setRegisterType}
           />
         </div>
 
@@ -96,8 +100,8 @@ function ComprehensiveReport() {
             label="شرکت‌های توزیع"
             placeholder="انتخاب شرکت‌ها"
             options={multiOptions}
-            value={multiValue}
-            onChange={setMultiValue}
+            value={companyA}
+            onChange={setCompanyA}
             searchable
             multiple
             searchPlaceholder="جستجو..."
@@ -106,8 +110,8 @@ function ComprehensiveReport() {
             label="شرکت‌های توزیع"
             placeholder="انتخاب شرکت‌ها"
             options={multiOptions}
-            value={multiValue}
-            onChange={setMultiValue}
+            value={companyB}
+            onChange={setCompanyB}
             searchable
             multiple
             searchPlaceholder="جستجو..."
@@ -116,8 +120,8 @@ function ComprehensiveReport() {
             label="شرکت‌های توزیع"
             placeholder="انتخاب شرکت‌ها"
             options={multiOptions}
-            value={multiValue}
-            onChange={setMultiValue}
+            value={companyC}
+            onChange={setCompanyC}
             searchable
             multiple
             searchPlaceholder="جستجو..."
@@ -126,8 +130,8 @@ function ComprehensiveReport() {
             label="شرکت‌های توزیع"
             placeholder="انتخاب شرکت‌ها"
             options={multiOptions}
-            value={multiValue}
-            onChange={setMultiValue}
+            value={companyD}
+            onChange={setCompanyD}
             searchable
             multiple
             searchPlaceholder="جستجو..."
