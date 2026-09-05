@@ -1,10 +1,27 @@
-import Text from '../../shared/Text';
+import { useState } from 'react';
+import CustomWrapper from '../../shared/Wrapper';
+import Radio from '../../shared/Radio';
 
 function ComprehensiveReport() {
+  const [reportType, setReportType] = useState('comprehensive');
+
   return (
-    <div dir="rtl" className="w-full py-6">
-      <Text className="text-xl font-bold">Comprehensive Report</Text>
-    </div>
+    <CustomWrapper
+      className="min-w-full rounded-md min-h-125 py-5 px-6"
+      showMessage={false}
+      showExcel={true}
+      showSearch={true}
+    >
+      <div className="mt-5">
+        <Radio
+          label="Comprehensive Report"
+          name="reportType"
+          value="comprehensive"
+          checked={reportType === 'comprehensive'}
+          onChange={(e) => setReportType(e.target.value)}
+        />
+      </div>
+    </CustomWrapper>
   );
 }
 

@@ -79,7 +79,7 @@ function CustomWrapper({
 
   return (
     <div
-      className={` relative rounded-2xl shadow-md flex flex-col gap-2 px-5 overflow-hidden ${fixedClasses} ${className}`}
+      className={`relative rounded-2xl shadow-md flex flex-col gap-2 px-5 overflow-hidden ${fixedClasses} ${className}`}
       style={{
         width,
         height,
@@ -90,50 +90,51 @@ function CustomWrapper({
       }}
       {...rest}
     >
-      {showMessage ? (
-        <button
-          onClick={onMessageClick}
-          className="absolute top-1 -rotate-90 left-3 z-10 p-1 rounded hover:bg-gray-100 py-2"
-        >
-          {messageHref ? (
-            <a href={messageHref}>
+      <div className="flex gap-2 w-full items-end justify-end">
+        {showMessage ? (
+          <button
+            onClick={onMessageClick}
+            className=" top-1 -rotate-90  z-10 p-1 rounded hover:bg-gray-100 py-2"
+          >
+            {messageHref ? (
+              <a href={messageHref}>
+                <Message />
+              </a>
+            ) : (
               <Message />
-            </a>
-          ) : (
-            <Message />
-          )}
-        </button>
-      ) : null}
+            )}
+          </button>
+        ) : null}
 
-      {showExcel ? (
-        <button
-          onClick={onExcelClick}
-          className="absolute top-1 left-12 z-10 p-1 rounded hover:bg-gray-100 py-2"
-        >
-          {excelHref ? (
-            <a href={excelHref}>
+        {showExcel ? (
+          <button
+            onClick={onExcelClick}
+            className=" top-1 left-20 z-10 bg-white p-2.5 rounded-lg border border-gray-200 shadow-md hover:bg-[#e6dddd] cursor-pointer"
+          >
+            {excelHref ? (
+              <a href={excelHref}>
+                <ExcelFile  />
+              </a>
+            ) : (
               <ExcelFile />
-            </a>
-          ) : (
-            <ExcelFile />
-          )}
-        </button>
-      ) : null}
-
-      {showSearch ? (
-        <button
-          onClick={onSearchClick}
-          className="absolute top-1 left-20 z-10 p-1 rounded hover:bg-gray-100 py-2"
-        >
-          {searchHref ? (
-            <a href={searchHref}>
+            )}
+          </button>
+        ) : null}
+        {showSearch ? (
+          <button
+            onClick={onSearchClick}
+            className=" top-1 left-12 z-10 bg-white p-2.5 rounded-lg border-gray-200 shadow-md hover:bg-[#e6dddd] cursor-pointer"
+          >
+            {searchHref ? (
+              <a href={searchHref}>
+                <Search width={24} height={24} />
+              </a>
+            ) : (
               <Search />
-            </a>
-          ) : (
-            <Search />
-          )}
-        </button>
-      ) : null}
+            )}
+          </button>
+        ) : null}
+      </div>
 
       {children}
     </div>

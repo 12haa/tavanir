@@ -1,4 +1,4 @@
-function ExcelFile({ width = 24, height = 24, color = '#22C55E' }) {
+function ExcelFile({ width = 24, height = 24, color = '#248657' }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

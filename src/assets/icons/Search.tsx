@@ -1,4 +1,4 @@
-function Search({ width = 24, height = 24, color = '#000000' }) {
+function Search({ width = 24, height = 24, color = '#363630' }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

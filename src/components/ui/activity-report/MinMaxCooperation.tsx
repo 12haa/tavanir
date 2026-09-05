@@ -1,10 +1,11 @@
+import CustomWrapper from '../../shared/Wrapper';
 import Text from '../../shared/Text';
 
 function MinMaxCooperation() {
   return (
-    <div dir="rtl" className="w-full py-6">
+    <CustomWrapper className="min-w-full rounded-md" showMessage>
       <Text className="text-xl font-bold">Minimum and Maximum Cooperation</Text>
-    </div>
+    </CustomWrapper>
   );
 }
 
