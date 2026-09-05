@@ -89,7 +89,7 @@ export const navMenu: NavMenuItem[] = [
       {
         id: 4003,
         menuTitle: 'گزارش های پیش بینی کاهش بار',
-        route: '/reports/monthly',
+        route: 'ForecastReport',
       },
       {
         id: 4004,
