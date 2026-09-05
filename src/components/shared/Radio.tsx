@@ -1,4 +1,6 @@
 import type { ChangeEvent } from 'react';
+import { colors } from '../../lib/theme';
+import Text from './Text';
 
 interface RadioProps {
   label: string;
@@ -34,9 +36,12 @@ function Radio({
         checked={checked}
         onChange={onChange}
         disabled={disabled}
-        className="w-4 h-4 accent-[#248657] cursor-pointer disabled:cursor-not-allowed focus:outline-none"
+        onMouseEnter={(e) => (e.currentTarget.style.accentColor = colors.radio.hover)}
+        onMouseLeave={(e) => (e.currentTarget.style.accentColor = colors.radio[100])}
+        className="w-4 h-4 cursor-pointer disabled:cursor-not-allowed focus:outline-none"
+        style={{ accentColor: colors.radio[100] }}
       />
-      <span className={`text-sm text-gray-700 ${labelClassName}`}>{label}</span>
+      <Text className={`text-md  w-132.5 ${labelClassName}`}>{label}</Text>
     </label>
   );
 }

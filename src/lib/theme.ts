@@ -47,4 +47,8 @@ export const colors = {
   divider: {
     100: '#e4e7ec',
   },
+  radio: {
+    100: '#1c78fa',
+    hover: '#135ec4',
+  },
 } as const;
