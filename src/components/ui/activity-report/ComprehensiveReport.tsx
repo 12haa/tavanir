@@ -2,18 +2,14 @@ import { useState } from 'react';
 import CustomWrapper from '../../shared/Wrapper';
 import Radio from '../../shared/Radio';
 import JalaliDatepicker from '../datepicker/JalaliDatepicker';
+import { getTodayJalaliString } from '../../../lib/jalali';
 
 function ComprehensiveReport() {
   const [reportType, setReportType] = useState('comprehensive');
-  const today = new Date();
 
-  const jalaliDate = new Intl.DateTimeFormat('fa-IR-u-ca-persian', {
-    year: 'numeric',
-    month: 'numeric',
-    day: '2-digit',
-  }).format(today);
+  const [selectedDate, setSelectedDate] = useState(() => getTodayJalaliString(true));
+  console.log('🚀 ~ ComprehensiveReport ~ selectedDate:', selectedDate);
 
-  console.log(jalaliDate);
   return (
     <CustomWrapper
       className="min-w-full rounded-md min-h-125 py-5 px-6"
@@ -42,8 +38,8 @@ function ComprehensiveReport() {
       <div className="mt-12 w-full">
         <div>
           <JalaliDatepicker
-            defaultValue=""
-            placeholder={jalaliDate}
+            value={selectedDate}
+            onChange={setSelectedDate}
             persianDigits
             className="min-w-[400px]"
           />

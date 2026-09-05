@@ -126,21 +126,21 @@ const IS_MOBILE = /iphone|ipod|android|ie|blackberry|fennec/.test(
 /* ------------------------------------------------------ helpers */
 
 function isPlainObject(value: unknown): boolean {
-  if (!value || typeof value !== 'object' || (value as { nodeType?: number }).nodeType) return false;
-  try {
-    return JSON.stringify(value) === '{}';
-  } catch {
-    return true;
-  }
+  if (!value || typeof value !== 'object') return false;
+  if ((value as { nodeType?: number }).nodeType) return false;
+  if (Array.isArray(value)) return false;
+  const proto = Object.getPrototypeOf(value);
+  return proto === Object.prototype || proto === null;
 }
 
 function merge(...values: unknown[]): Record<string, unknown> {
   const result: Record<string, unknown> = {};
   for (const value of values) {
     if (value === undefined || value === null) continue;
-    if (isPlainObject(value)) {
-      for (const key of Object.keys(value as object)) {
-        const v = (value as Record<string, unknown>)[key];
+    if (isPlainObject(value) || Array.isArray(value)) {
+      const obj = value as Record<string, unknown>;
+      for (const key of Object.keys(obj)) {
+        const v = obj[key];
         if (v === undefined) continue;
         if (isPlainObject(v) || Array.isArray(v)) result[key] = merge(result[key], v);
         else result[key] = v;
@@ -168,9 +168,14 @@ function pad(value: number, length = 2): string {
 
 const PERSIAN_DIGITS = '۰۱۲۳۴۵۶۷۸۹';
 
-function toDisplay(value: number, persian: boolean): string {
+function toDisplay(value: number | string, persian: boolean): string {
   const text = String(value);
   return persian ? text.replace(/\d/g, (digit) => PERSIAN_DIGITS[Number(digit)]) : text;
+}
+
+function toDisplayPadded(value: number | undefined, length: number, persian: boolean): string {
+  const padded = pad(value ?? 0, length);
+  return toDisplay(padded, persian);
 }
 
 function isLeapYear(year: number): boolean {
@@ -443,12 +448,16 @@ function formatDateString(ctx: Ctx, date: JalaliDate): string {
   return `${date.year}${ctx.sep.date}${pad(date.month)}${ctx.sep.date}${pad(date.day)}`;
 }
 
+function isEmptyObject(value: unknown): boolean {
+  return isPlainObject(value) && Object.keys(value as object).length === 0;
+}
+
 function isDateInRange(ctx: Ctx, year: number, month: number, day: number): boolean {
   const target = formatDateString(ctx, { year, month, day });
-  const min = isPlainObject(ctx.minDate)
+  const min = isEmptyObject(ctx.minDate)
     ? target
     : formatDateString(ctx, ctx.minDate as JalaliDate);
-  const max = isPlainObject(ctx.maxDate)
+  const max = isEmptyObject(ctx.maxDate)
     ? target
     : formatDateString(ctx, ctx.maxDate as JalaliDate);
   return target <= max && target >= min;
@@ -490,13 +499,13 @@ function parseValue(ctx: Ctx, str: string): JalaliDateTime {
 }
 
 function formatValue(ctx: Ctx, value: JalaliDateTime): string {
-  const d = (n: number | undefined) => toDisplay(n ?? 0, ctx.persianDigits);
+  const d = (n: number | undefined, len: number) => toDisplayPadded(n, len, ctx.persianDigits);
   const datePart = ctx.date
-    ? `${d(value.year)}${ctx.sep.date}${d(Number(value.month))}${ctx.sep.date}${d(Number(value.day))}`
+    ? `${d(value.year, 4)}${ctx.sep.date}${d(value.month, 2)}${ctx.sep.date}${d(value.day, 2)}`
     : '';
   const timePart = ctx.time
-    ? `${d(Number(value.hour))}${ctx.sep.time}${d(Number(value.minute))}` +
-      (ctx.hasSecond ? `${ctx.sep.time}${d(Number(value.second))}` : '')
+    ? `${d(value.hour, 2)}${ctx.sep.time}${d(value.minute, 2)}` +
+      (ctx.hasSecond ? `${ctx.sep.time}${d(value.second, 2)}` : '')
     : '';
   return datePart + (datePart && timePart ? ctx.sep.between : '') + timePart;
 }
@@ -908,17 +917,17 @@ function JalaliDatepicker(
   };
 
   const atMaxYear =
-    !isPlainObject(options.maxDate) &&
+    !isEmptyObject(options.maxDate) &&
     (options.maxDate as JalaliDate).year === viewDate.year;
   const atMinYear =
-    !isPlainObject(options.minDate) &&
+    !isEmptyObject(options.minDate) &&
     (options.minDate as JalaliDate).year === viewDate.year;
   const atMaxMonth =
-    !isPlainObject(options.maxDate) &&
+    !isEmptyObject(options.maxDate) &&
     (options.maxDate as JalaliDate).year === viewDate.year &&
     (options.maxDate as JalaliDate).month === viewDate.month;
   const atMinMonth =
-    !isPlainObject(options.minDate) &&
+    !isEmptyObject(options.minDate) &&
     (options.minDate as JalaliDate).year === viewDate.year &&
     (options.minDate as JalaliDate).month === viewDate.month;
 
@@ -1143,7 +1152,7 @@ function JalaliDatepicker(
 
 
 function formatTodayDate(options: ResolvedOptions, today: JalaliDate): string {
-  const d = (n: number) => toDisplay(n, options.persianDigits);
-  return `${d(today.year)}${options.sep.date}${d(today.month)}${options.sep.date}${d(today.day)}`;
+  const d = (n: number | undefined, len: number) => toDisplayPadded(n, len, options.persianDigits);
+  return `${d(today.year, 4)}${options.sep.date}${d(today.month, 2)}${options.sep.date}${d(today.day, 2)}`;
 }
 export default forwardRef(JalaliDatepicker);
