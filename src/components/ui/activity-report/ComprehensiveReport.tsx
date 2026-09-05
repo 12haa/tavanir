@@ -3,12 +3,33 @@ import CustomWrapper from '../../shared/Wrapper';
 import Radio from '../../shared/Radio';
 import JalaliDatepicker from '../datepicker/JalaliDatepicker';
 import { getTodayJalaliString } from '../../../lib/jalali';
+import Select from '../select/Select';
+import MultiSelect from '../select/MultiSelect';
 
 function ComprehensiveReport() {
   const [reportType, setReportType] = useState('comprehensive');
 
-  const [selectedDate, setSelectedDate] = useState(() => getTodayJalaliString(true));
-  console.log('🚀 ~ ComprehensiveReport ~ selectedDate:', selectedDate);
+  const [startDate, setStartDate] = useState(() => getTodayJalaliString(true));
+  const [endDate, setEndDate] = useState(() => getTodayJalaliString(true));
+
+  // demo options – replace with real data / API
+  const simpleOptions = [
+    { value: 'all', label: 'همه' },
+    { value: 'active', label: 'فعال' },
+    { value: 'inactive', label: 'غیرفعال' },
+  ];
+  const multiOptions = [
+    { value: '1', label: 'شرکت توزیع برق تهران' },
+    { value: '2', label: 'شرکت توزیع برق اصفهان' },
+    { value: '3', label: 'شرکت توزیع برق مشهد' },
+    { value: '4', label: 'شرکت توزیع برق شیراز' },
+    { value: '5', label: 'شرکت توزیع برق تبریز' },
+  ];
+
+  const [simpleValue, setSimpleValue] = useState('');
+  const [multiValue, setMultiValue] = useState<string[]>([]);
+
+  console.log('🚀 ~ ComprehensiveReport ~ startDate:', startDate, 'endDate:', endDate);
 
   return (
     <CustomWrapper
@@ -35,15 +56,55 @@ function ComprehensiveReport() {
           onChange={(e) => setReportType(e.target.value)}
         />
       </div>
-      <div className="mt-12 w-full">
-        <div>
+      <div className="mt-12 w-full flex flex-col gap-6">
+        {/* Start / End dates */}
+        <div className=" w-full  grid grid-cols-1 md:grid-cols-4 gap-6">
           <JalaliDatepicker
-            value={selectedDate}
-            onChange={setSelectedDate}
+            label="تاریخ شروع"
+            value={startDate}
+            onChange={setStartDate}
             persianDigits
-            className="min-w-[400px]"
+            placeholder="۱۴۰۴/۰۱/۰۱"
+          />
+          <JalaliDatepicker
+            label="تاریخ پایان"
+            value={endDate}
+            onChange={setEndDate}
+            persianDigits
+            placeholder="۱۴۰۴/۰۱/۳۰"
+          />
+          <Select
+            label="بازه های هفتگی "
+            placeholder="انتخاب "
+            options={simpleOptions}
+            value={simpleValue}
+            onChange={setSimpleValue}
+            className="min-w-full "
+          />
+          <Select
+            label="نوع ثبت نام"
+            placeholder="انتخاب نوع"
+            options={simpleOptions}
+            value={simpleValue}
+            onChange={setSimpleValue}
           />
         </div>
+
+        {/* Dropdowns – same border/shadow as datepicker (.jdp-input) via select.css */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <MultiSelect
+            label="شرکت‌های توزیع"
+            placeholder="انتخاب شرکت‌ها"
+            options={multiOptions}
+            value={multiValue}
+            onChange={setMultiValue}
+            searchable
+            multiple
+            searchPlaceholder="جستجو..."
+          />
+        </div>
+        {/* example single without multiple (controlled via prop) */}
+        {/* <MultiSelect label="تک‌انتخاب با جستجو" options={simpleOptions} multiple={false} searchable /> */}
       </div>
     </CustomWrapper>
   );

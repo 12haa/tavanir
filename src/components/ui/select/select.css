@@ -1,0 +1,166 @@
+/* ------------------------------------------------------------------
+   Reuses the same design tokens as jalaliDatepicker.css (.jdp-input)
+   -> border, shadow, focus, radius identical
+   ------------------------------------------------------------------ */
+
+.jdp-input {
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-family, 'iran', sans-serif);
+  font-size: 0.875rem;
+  outline: none;
+  width: 100%;
+  background: #ffffff;
+  color: #363630;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.jdp-input::placeholder { color: #7a7a7a; }
+.jdp-input:focus {
+  border-color: #fc9e29;
+  box-shadow: 0 0 0 3px rgba(252, 158, 41, 0.25);
+}
+
+/* wrapper provides label spacing like JalaliDatepicker */
+.cselect-wrap {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  font-family: var(--font-family, 'iran', sans-serif);
+  direction: rtl;
+}
+.cselect-label {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #374151;
+  font-family: var(--font-family, 'iran', sans-serif);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* trigger button – visually identical to .jdp-input */
+.cselect-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+  min-height: 38px;
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  background: #ffffff;
+  color: #363630;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.cselect-trigger:focus,
+.cselect-trigger.cselect-open {
+  border-color: #fc9e29;
+  box-shadow: 0 0 0 3px rgba(252, 158, 41, 0.25);
+}
+.cselect-trigger.cselect-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: #f9fafb;
+}
+.cselect-value {
+  flex: 1;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.875rem;
+}
+.cselect-placeholder { color: #7a7a7a; }
+.cselect-caret {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s;
+  opacity: 0.7;
+}
+.cselect-open .cselect-caret { transform: rotate(180deg); }
+
+/* dropdown panel – same look as .jdp-container */
+.cselect-panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  background: #fffbf6;
+  border: 1px solid #e4e7ec;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+  animation: jdpOpenAnimation 0.18s cubic-bezier(0.23,1,0.32,1);
+  max-height: 260px;
+  display: flex;
+  flex-direction: column;
+}
+.cselect-search-wrap {
+  padding: 8px;
+  border-bottom: 1px solid #e4e7ec;
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+}
+.cselect-search {
+  width: 100%;
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  padding: 6px 10px;
+  font-size: 0.8125rem;
+  outline: none;
+  background: #fff;
+  color: #363630;
+}
+.cselect-search:focus {
+  border-color: #fc9e29;
+  box-shadow: 0 0 0 2px rgba(252,158,41,0.2);
+}
+.cselect-options {
+  overflow-y: auto;
+  padding: 6px;
+  flex: 1;
+}
+.cselect-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #363630;
+  transition: background 0.12s;
+}
+.cselect-option:hover { background: rgba(0,0,0,0.06); }
+.cselect-option.cselect-selected { background: rgba(252,158,41,0.16); }
+.cselect-option.cselect-disabled { opacity: 0.4; cursor: not-allowed; }
+.cselect-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: #ff9e0c;
+  flex: none;
+}
+.cselect-empty {
+  padding: 16px;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: #7a7a7a;
+}
+.cselect-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.cselect-tag {
+  background: #ff9e0c;
+  color: #fff;
+  border-radius: 999px;
+  padding: 1px 8px;
+  font-size: 0.75rem;
+}

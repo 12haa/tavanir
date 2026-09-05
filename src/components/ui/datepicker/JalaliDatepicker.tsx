@@ -942,7 +942,7 @@ function JalaliDatepicker(
   };
 
   return (
-    <div className="jdp-wrap" ref={wrapperRef} style={{ position: 'relative', display: 'inline-block' }}>
+    <div className="jdp-wrap w-full" ref={wrapperRef} style={{ position: 'relative', display: 'block', width: '100%' }}>
       {props.label && (
         <label className="text-md font-normal text-gray-700 font-iran block mb-1">
           {props.label}
